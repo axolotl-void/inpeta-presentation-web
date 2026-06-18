@@ -1,0 +1,539 @@
+DINAS KOMUNIKASI, INFORMATIKA, DAN PERSANDIAN 
+UPTD STATISTIK ACEH 
+(30 Maret 2026 – 08 Juni 2026) 
+ 
+ 
+LAPORAN MAGANG 
+ 
+RE-ENGINEERING SISTEM WEB GIS INPETA ACEH BERBASIS SINGLE PAGE APPLICATION (SPA) MENGGUNAKAN REACT.JS UNTUK MENINGKATKAN AKSESIBILITAS MOBILE DAN USER EXPERIENCE DI UPTD STATISTIK DINAS KOMUNIKASI, INFORMATIKA, DAN PERSANDIAN ACEH 
+OLEH : 
+YOGI PRASETYA SADEWA (23210060) 
+ 
+DOSEN PEMBIMBING LAPANGAN
+MUKHROJI, S.ST, M.T.
+PROGRAM STUDI S1 ILMU KOMPUTER FAKULTAS SAINS TEKNOLOGI DAN ILMU KESEHATAN UNIVERSITAS BINA BANGSA GETSEMPENA BANDA ACEH 
+2026
+LEMBAR PENGESAHAN
+RE-ENGINEERING SISTEM WEB GIS INPETA ACEH BERBASIS SINGLE PAGE APPLICATION (SPA) MENGGUNAKAN REACT.JS UNTUK MENINGKATKAN AKSESIBILITAS MOBILE DAN USER EXPERIENCE DI UPTD STATISTIK DINAS KOMUNIKASI, INFORMATIKA, DAN PERSANDIAN ACEH
+Laporan Magang ini disusun untuk Memenuhi Persyaratan Akademik di Prodi Ilmu Komputer FSTIK UBBG
+Nama Mahasiswa: Yogi Prasetya Sadewa
+NIM: 23210060
+Program Studi: Ilmu Komputer
+Fakultas: FSTIK
+Mitra/Lokasi Magang : DISKOMINSA UPTS Statistik Aceh
+Tanggal : 08 Juni2026
+Menyutujui Dosen
+Pembimbing Lapangan
+Mukhroji, S.ST., M.T.
+NIDN. 1326099001
+Mengetahui
+Ketua Program
+Studi Ilmu Komputer
+Khairuman, S.Kom.M.Kom
+NIDN. 1318018001
+LEMBAR PENGESAHAN RE-ENGINEERING SISTEM WEB GIS INPETA ACEH BERBASIS SINGLE PAGE APPLICATION (SPA) MENGGUNAKAN REACT.JS UNTUK MENINGKATKAN AKSESIBILITAS MOBILE DAN USER EXPERIENCE DI UPTD STATISTIK DINAS KOMUNIKASI, INFORMATIKA, DAN PERSANDIAN ACEH
+Laporan Magang ini disetujui oleh : 
+DINAS KOMUNIKASI, INFORMATIKA, DAN PERSANDIAN UPTD 
+STATISTIK ACEH 
+Tempat Pengesahan   : Banda Aceh
+Tanggal : 08 Juli 2026
+ 
+Menyetujui Mentor/Pembimbing 
+Lapangan 
+ 
+ 
+ 
+Bobby Novrizan, S.SiNIP.198511162024211008
+ 
+ 
+      BANDA ACEH
+2026
+KATA PENGANTAR
+Puji syukur penulis panjatkan kehadirat Allah SWT karena atas rahmat dan karunia-Nya penulis dapat menyelesaikan laporan kegiatan magang ini dengan baik dan tepat waktu. Laporan ini disusun sebagai salah satu syarat dalam menyelesaikan kegiatan magang pada Program Studi Ilmu Komputer, Universitas Bina Bangsa Getsempena.
+Kegiatan magang dilaksanakan di Dinas Komunikasi, Informatika, dan Persandian (DISKOMINSA) Aceh, tepatnya pada UPTD Statistik Aceh. Selama pelaksanaan magang, penulis terlibat dalam proses re-engineering sistem web GIS inPETA Aceh berbasis Single Page Application (SPA) menggunakan React.js untuk meningkatkan aksesibilitas mobile dan user experience.
+Dalam proses penyusunan laporan ini, penulis memperoleh banyak bantuan, dukungan, bimbingan, serta pengalaman berharga dari berbagai pihak. Oleh karena itu, pada kesempatan ini penulis ingin menyampaikan ucapan terima kasih kepada:
+Allah SWT yang telah memberikan kesehatan, kelancaran, dan kemudahan selama proses magang dan penyusunan laporan.
+Kedua orang tua dan keluarga yang selalu memberikan doa dan dukungan kepada penulis.
+Bapak Mukhroji, S.ST., M.T. selaku dosen pembimbing yang telah memberikan arahan dan bimbingan selama pelaksanaan magang dan penyusunan laporan.
+Bapak Sayid Azhary, ST., M.Si selaku pimpinan instansi DISKOMINSA Aceh yang telah memberikan kesempatan kepada penulis untuk melaksanakan kegiatan magang.
+Bapak Bobby Novrizan selaku mentor dan pembimbing lapangan di UPTD Statistik Aceh yang telah memberikan arahan, pengalaman, dan ilmu selama proses kegiatan magang berlangsung.
+Seluruh staf dan pegawai DISKOMINSA UPTD Statistik Aceh yang telah membantu dan memberikan pengalaman kerja yang bermanfaat kepada penulis.
+Teman-teman dan semua pihak yang telah memberikan dukungan dalam penyusunan laporan ini.
+Penulis menyadari bahwa laporan ini masih memiliki kekurangan dan jauh dari kata sempurna. Oleh karena itu, penulis sangat mengharapkan kritik dan saran yang membangun demi penyempurnaan laporan ini di masa mendatang.
+Akhir kata, penulis berharap laporan kegiatan magang ini dapat memberikan manfaat serta menjadi referensi bagi mahasiswa maupun pihak lain yang membutuhkan.
+Banda Aceh, Juni 2026
+Penulis
+Yogi Prasetya Sadewa
+NIM. 23210060
+DAFTAR ISI
+LEMBAR PENGESAHAN DPL DAN PRODIi
+LEMBAR PENGESAHAN MENTORIi
+KATA PENGANTARiii
+DAFTAR ISIv
+DAFTAR GAMBARvii
+DAFTAR TABLEviii
+BAB I PENDAHULUAN1
+    1.1 Latar Belakang1
+    1.2 Tujuan dan Manfaat2
+    1.2.1 Tujuan2
+    1.2.2 Manfaat2
+    1.3 Lokasi dan Jadwal Magang3
+    1.4 Metode Pelaksanaan3
+    1.5 Rumusan Masalah4
+    1.6 Sistematika Penulisan5
+BAB II TINJAUAN PUSTAKA7
+    2.1 Sejarah Dinas Komunikasi, Informatika dan Persandian Aceh7
+    2.2 Visi Dan Misi7
+    2.3 Struktur Organisasi8
+    2.4 Tugas dan Fungsi UPTD Statistik9
+BAB III LANDASAN TEORI10
+    3.1 Sistem Informasi Geografis (Geographic Information System/GIS)10
+    3.2 Re-Engineering Sistem11
+    3.3 Single Page Application (SPA)11
+    3.4 React.js12
+    3.5 Node.js13
+    3.6 PostgreSQL13
+    3.7 Responsive Web Design14
+    3.8 Mobile-First Design15
+    3.9 User Experience (UX)16
+    3.10 User Interface (UI)16
+    3.11 Tools dan Teknologi Pendukung17
+BAB IV HASIL DAN PEMBAHASAN18
+    4.1 Analisis Sistem Lama18
+    4.2 Perancangan Sistem Baru20
+    4.3 Implementasi dan Hasil Sistem21
+    4.3.1 Implementasi Landing Page21
+    4.3.2 Implementasi Web GIS21
+    4.3.3 Implementasi Dashboard Admin22
+    4.3.4 Hasil Pengujian Sistem23
+BAB V KESIMPULAN DAN SARAN24
+    5.1 Kesimpulan………………………………………………………………………………..25
+    5.2 Saran24
+    5.2.1 Saran untuk Instansi24
+    5.2.2 Saran untuk Mahasiswa25
+    5.2.3 Saran untuk Pihak Kampus25
+DAFTAR PUSTAKA26
+LAMPIRAN DOKUMENTASI27
+DAFTAR GAMBAR
+Gambar 2. 1 Struktur Organisasi8
+Gambar 3. 1 Konsep Kerja Sistem Web GIS……………………………………………………10
+Gambar 3. 2 Node.js13
+Gambar 3. 3 PotgreSQL14
+Gambar 3. 5 Tampilan Mobile16
+Gambar 4. 1 GIS Web InPeta Lama……………………………………………………………..18
+Gambar 4. 2 Landing page web InPeta Lama19
+Gambar 4. 3 Arsitektur InPeta20
+Gambar 4. 4 Tampilan landing page dekstop & mobile InPeta Baru21
+Gambar 4. 5 Tampilan GIS dekstop & Mobile22
+Gambar 5. 1 GIS (Peta) Page………………………………………………………………….. 27
+Gambar 5. 2 Proses Ngoding27
+Gambar 5. 3 Login Page27
+Gambar 5. 4 Home Page27
+DAFTAR TABLE
+Table 1. 1 Manfaat3
+Table 3. 1 Tools17
+Table 4. 1 Teknologi dan Fungsi………………………………………………………………...20
+Table 4. 2 Testing Fitur23
+BAB I
+PENDAHULUAN
+Latar Belakang
+Sistem Informasi Geografis (Geographic Information System/GIS) berbasis web saat ini menjadi komponen penting dalam mendukung transparansi data serta peningkatan kualitas layanan publik digital. Di Provinsi Aceh, pemerintah melalui Dinas Komunikasi, Informatika, dan Persandian (DISKOMINSA) Aceh telah mengembangkan platform inPETA Aceh sebagai portal pemetaan interaktif yang menyajikan data sektoral, khususnya di bidang peternakan, secara terpusat dan terintegrasi.
+Namun, berdasarkan hasil observasi selama kegiatan magang di UPTD Statistik DISKOMINSA Aceh, terdapat sejumlah permasalahan yang menghambat optimalisasi pemanfaatan sistem tersebut. Pertama, antarmuka pengguna masih mengadopsi desain lama (legacy) sehingga kurang intuitif dan belum memberikan pengalaman pengguna yang optimal. Kedua, informasi yang disajikan belum sepenuhnya lengkap serta belum mendukung pembaruan data secara real-time. Ketiga, sistem belum responsif pada perangkat mobile, padahal mayoritas pengguna internet di Indonesia lebih banyak mengakses layanan digital melalui perangkat seluler.
+Dari aspek teknis, inPETA Aceh masih menggunakan arsitektur Multi-Page Application (MPA) konvensional yang mengharuskan pemuatan ulang halaman secara penuh (full page reload) pada setiap interaksi pengguna. Kondisi tersebut berdampak pada meningkatnya latensi akses serta menurunkan kualitas pengalaman pengguna (user experience). Selain itu, belum tersedianya fitur navigasi mobile yang optimal, dashboard visual interaktif, serta sistem pencarian data yang lebih fleksibel turut membatasi efektivitas penggunaan sistem, baik bagi masyarakat umum maupun pemangku kepentingan.
+Untuk mengatasi berbagai permasalahan tersebut, diperlukan pendekatan re-engineering sistem dengan mengadopsi arsitektur Single Page Application (SPA) berbasis React.js. Pendekatan ini memungkinkan peningkatan performa melalui mekanisme client-side rendering, mendukung pengembangan antarmuka berbasis mobile-first design, serta menghadirkan transisi halaman yang lebih cepat, responsif, dan interaktif.
+Oleh karena itu, kegiatan magang ini difokuskan pada proses re-engineering sistem web GIS inPETA Aceh menggunakan teknologi React.js. Tujuan utama pengembangan ini adalah meningkatkan aksesibilitas pada perangkat mobile, memperbaiki kualitas pengalaman pengguna, serta menyempurnakan kelengkapan dan keterbaruan informasi yang disajikan. Dengan demikian, inPETA Aceh diharapkan mampu berfungsi secara optimal sebagai platform informasi peternakan yang modern, terintegrasi, dan adaptif terhadap kebutuhan masyarakat di era digital.
+Tujuan dan Manfaat
+Tujuan
+Kegiatan magang ini memiliki tujuan utama sebagai berikut:
+Menganalisis keterbatasan antarmuka dan arsitektur web GIS inPETA Aceh yang ada saat ini, khususnya terkait aspek usability, kelengkapan informasi, dan responsivitas mobile.
+Merancang ulang antarmuka inPETA Aceh menggunakan pendekatan mobile-first design dan user-centered design agar lebih intuitif dan mudah dipahami pengguna.
+Mengimplementasikan arsitektur Single Page Application (SPA) berbasis React.js untuk menggantikan pendekatan Multi-Page Application (MPA) tradisional guna meningkatkan performa sistem dan pengalaman navigasi yang lebih seamless.
+Menguji responsivitas dan aksesibilitas mobile dari sistem hasil re-engineering melalui pengujian lintas perangkat (desktop, tablet, dan smartphone) untuk memastikan kompatibilitas dan kenyamanan penggunaan.
+Mendokumentasikan seluruh proses pengembangan secara sistematis sebagai referensi teknis bagi pengembang lain di lingkungan DISKOMINSA Aceh.
+Manfaat
+Hasil dari kegiatan magang ini diharapkan memberikan manfaat bagi berbagai pihak:
+No
+Pihak
+Manfaat
+1
+Instansi (DISKOMINSA/UPTD Statistik)
+Memperoleh sistem web GIS yang lebih modern, mobile-friendly, dan mudah dikembangkan lebih lanjut untuk kebutuhan pelayanan data peternakan Aceh.
+2
+Pengguna Publik
+Memperoleh pengalaman akses informasi geospasial yang lebih nyaman melalui antarmuka yang intuitif dan dukungan penuh terhadap perangkat mobile.
+3
+Mahasiswa (Penulis)
+Mengembangkan kompetensi teknis dalam pengembangan web modern berbasis React.js, SPA, responsive design, serta memahami proses rekayasa perangkat lunak di lingkungan pemerintahan digital.
+4
+Akademik (Prodi Ilmu Komputer)
+Menambah referensi studi kasus penerapan teknologi web modern dalam proyek pengembangan sistem informasi di instansi pemerintah daerah.
+Table 1. 1 Manfaat
+Lokasi dan Jadwal Magang
+Kegiatan magang ini dilaksanakan di Dinas Komunikasi, Informatika, dan Persandian (DISKOMINSA) Aceh, tepatnya pada Unit Pelaksana Teknis Daerah (UPTD) Statistik. Instansi ini berlokasi di Jln. Tgk. Cot Plieng No.48 Kec Kuta Alam, Banda , Baru City, Kuta Alam, Banda Aceh City, Provinsi Aceh. UPTD Statistik merupakan unit teknis yang berperan dalam pengelolaan, validasi, dan diseminasi data statistik daerah untuk mendukung perencanaan pembangunan dan transparansi informasi publik di lingkup Pemerintah Aceh.
+Pelaksanaan magang berlangsung selama 3 (tiga) bulan, terhitung mulai 25 Maret 2026 hingga 02 Juni 2026. Aktivitas dilakukan setiap hari kerja, Senin hingga Jumat, dengan jam operasional pukul 08.00 – 16.45 WIB. Selama periode ini, penulis ditempatkan di bidang pengembangan sistem informasi, dengan fokus utama pada proyek re-engineering web GIS inPETA Aceh menggunakan pendekatan Single Page Application (SPA) berbasis React.js.
+Metode Pelaksanaan
+Kegiatan magang ini dilaksanakan menggunakan pendekatan praktik kerja langsung (on-site internship) di lingkungan UPTD Statistik DISKOMINSA Aceh, dengan fokus utama pada proyek rekayasa ulang (re-engineering) sistem web GIS inPETA Aceh. Pelaksanaan kegiatan dirancang secara terstruktur dan iteratif, mengadopsi alur pengembangan perangkat lunak modern yang menekankan pada analisis kebutuhan, desain berpusat pada pengguna (user-centered design), serta pengembangan frontend yang responsif.
+Secara teknis, proses pelaksanaan dibagi menjadi empat tahapan utama:
+Analisis & Evaluasi Sistem Eksisting: Melakukan pemetaan keterbatasan antarmuka web inPETA menggunakan prinsip Usability Heuristics Nielsen, identifikasi masalah responsivitas, serta pengumpulan kebutuhan fungsional dari sisi pengguna dan instansi.
+Perancangan Antarmuka (UI/UX): Pembuatan wireframe dan high-fidelity prototype menggunakan Figma dan Canva dengan pendekatan mobile-first design, memastikan tata letak yang intuitif, navigasi yang jelas, dan kesiapan struktur sebelum masuk ke tahap pengembangan kode.
+Implementasi & Pengembangan Kode: Pengkodean sistem menggunakan Visual Studio Code dengan framework React.js untuk membangun arsitektur Single Page Application (SPA). Proses ini didukung oleh pemanfaatan developer tools dan AI-assisted coding untuk optimalisasi komponen, manajemen state, serta integrasi layanan peta interaktif.
+Pengujian & Validasi: Dilakukan pengujian responsivitas lintas perangkat (cross-device testing), evaluasi performa dan aksesibilitas menggunakan Lighthouse, serta validasi fungsionalitas secara berkala bersama pembimbing lapangan untuk memastikan keluaran sesuai dengan standar teknis dan kebutuhan instansi.
+Selama pelaksanaan, mahasiswa melakukan koordinasi rutin dengan pembimbing lapangan dari DISKOMINSA Aceh serta dosen pembimbing akademik guna memastikan arah pengembangan tetap selaras dengan tujuan institusi. Pendekatan ini tidak hanya bertujuan untuk menghasilkan prototipe sistem yang fungsional, tetapi juga mengasah kompetensi teknis (hard skills) dalam ekosistem pengembangan web modern, sekaligus memperkuat kemampuan komunikasi, manajemen waktu, dan adaptasi terhadap budaya kerja profesional di lingkungan pemerintahan digital.
+Rumusan Masalah
+Penerapan rekayasa ulang (re-engineering) pada sistem web GIS yang telah beroperasi seperti inPETA Aceh sering kali menghadapi tantangan dalam aspek antarmuka, performa, dan kompatibilitas perangkat. Berdasarkan identifikasi permasalahan pada sistem eksisting, rumusan masalah dalam kegiatan magang ini dirinci sebagai berikut:
+Bagaimana merancang ulang antarmuka dan alur informasi web inPETA Aceh agar lebih modern, intuitif, dan mampu menyajikan data secara lebih lengkap serta terstruktur?
+Bagaimana mengimplementasikan arsitektur Single Page Application (SPA) berbasis React.js untuk meningkatkan efisiensi rendering halaman dan kecepatan akses dibandingkan pendekatan Multi-Page Application (MPA) yang digunakan saat ini?
+Sejauh mana sistem hasil re-engineering dapat memenuhi prinsip mobile-first design dan meningkatkan user experience (UX) serta aksesibilitas pada perangkat seluler?
+1.6 Sistematika Penulisan
+Laporan magang ini disusun dalam lima bab yang sistematis untuk memudahkan pemahaman terhadap proses kegiatan dan hasil yang diperoleh, yaitu sebagai berikut:
+BAB I – PENDAHULUANMenguraikan latar belakang permasalahan web GIS inPETA Aceh, rumusan masalah, tujuan dan manfaat kegiatan, lokasi dan jadwal magang, metode pelaksanaan, serta sistematika penulisan laporan.
+BAB II – PROFIL INSTANSIMenyajikan gambaran umum Dinas Komunikasi, Informatika, dan Persandian (DISKOMINSA) Aceh, khususnya UPTD Statistik, meliputi visi dan misi, struktur organisasi, serta tugas dan fungsi bidang yang berkaitan dengan proyek.
+BAB III – LANDASAN TEORIMemaparkan konsep dan teknologi pendukung yang digunakan dalam proyek, antara lain Single Page Application (SPA), React.js, mobile-first design, user experience (UX), serta konsep pengembangan web GIS interaktif.
+BAB IV – HASIL DAN PEMBAHASANMenjelaskan tahapan pelaksanaan proyek secara rinci, mulai dari analisis sistem eksisting, perancangan antarmuka, implementasi sistem menggunakan React.js, hingga pengujian responsivitas dan evaluasi peningkatan aksesibilitas mobile serta pengalaman pengguna.
+BAB V – KESIMPULAN DAN SARANBerisi kesimpulan hasil kegiatan magang, jawaban atas rumusan masalah, serta saran dan rekomendasi untuk pengembangan sistem inPETA Aceh di masa mendatang.
+BAB II
+TINJAUAN PUSTAKA
+2.1 Sejarah Dinas Komunikasi, Informatika dan Persandian Aceh
+Restrukturisasi perangkat daerah kembali ditinjau ulang dengan keluarnya Qanun Aceh Nomor 13 Tahun 2016 Tentang Pembentukan Dan Susunan Perangkat Aceh, Dinas Komunikasi, Informatika dan Persandian Aceh menyelenggarakan Urusan Pemerintahan bidang Informasi dan Komunikasi.
+Struktur organisasi ini berlaku efektif sejak berlakunya  Peraturan Gubernur Aceh Nomor 119 Tahun 2016  Tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi Dan Tata Kerja Dinas Komunikasi,  Informatikad dan Persandian Aceh.
+Dinas Perhubungan, Komunikasi, Informasi dan Telematika Aceh dipisah menjadi dua Bidang Urusan Perangkat Kerja. Salah satunya adalah Dinas Komunikasi, Informatika dan Persandian Aceh.
+Pada tahun 2020, Dinas Komunikasi, Informatika dan Persandian Aceh memiliki tugas baru yang dibentuk melalui UPTD Statistik dengan landasan Peraturan Gubernur Aceh Nomor 61 Tahun 2020 Tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi Dan Tata Kerja Unit Pelaksana Teknis Daerah Statistik Pada Dinas Komunikasi, Informatika Dan Persandian Aceh dan dirubah SOTK Dinas melalui Peraturan Gubernur Nomor 55 Tahun 2020 tentang perubahan atas Peraturan Gubernur Aceh Nomor 119 Tahun 2016  Tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi Dan Tata Kerja Dinas Komunikasi,  Informatikad dan Persandian Aceh.
+Pada tahun 2024, Pemerintah Aceh merubah susunan Organisasi pada Perangkat Daerah melalui Peraturan Gubernur Aceh Nomor 01 Tahun 2024 Tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi Dan Tata Kerja Satuan Kerja Perangkat Aceh, Cabang Dinas Dan Unit Pelaksana Teknis Daerah.
+2.2 Visi Dan Misi
+Visi
+Terwujudnya masyarakat yang mampu memilih dan memilah konsumsi informasi untuk membangun masyarakat Aceh yang beradab, beradat dan bermartabat dalam nuansa Islami serta tumbuhnya partisipasi dalam proses pembangunan
+Misi
+Membangun jaringan unsur lembaga pemerintah dan lembaga masyarakat melalui proses komunikasi yang berkualitas.
+Membangun jaringan informasi perdesaan dan bentuk kelompok informasi dan komunikasi sebagai penggerak forum dialog dalam memecahkan persoalan-persoalan yang dihadapi masyarakat.
+Membangun jaringan infrastruktur teknologi komunikasi dan informasi yang optimal di lingkungan Pemerintah Aceh, dan terhubung dengan Pemerintah Kabupaten/Kota.
+Memperkuat keamanan infrastruktur teknologi komunikasi, informasi dan persandian di lingkungan Pemerintah Aceh.
+Membimbing pendapat umum dalam upaya membangun demokratisasi dan menyeimbangkan informasi public.
+Menampung dan mengolah opini publik sebagai bahan penentuan langkah kebijakan pemerintah selanjutnya. 
+Melindungi masyarakat dari berbagai informasi yang tidak sesuai dengan nilai-nilai keistimewaan daerah.
+2.3 Struktur Organisasi 
+Adapun Struktur Organisasi Sebagai Berikut : 
+Gambar 2. 1 Struktur Organisasi
+2.4 Tugas dan Fungsi UPTD Statistik
+Tugas Pokok
+ Statistik mempunyai tugas melaksanakan penyiapan bahan perumusan dan pelaksanaan kebijakan teknis di bidang pengumpulan, pengolahan, analisis, dan diseminasi data statistik daerah, serta pengembangan sistem informasi statistik yang terintegrasi dengan ekosistem Satu Data Aceh.
+Fungsi
+Untuk melaksanakan tugas tersebut, UPTD Statistik menyelenggarakan fungsi:
+Pengumpulan dan Validasi Data: Melakukan koordinasi dengan Satuan Kerja Perangkat Aceh (SKPA) dan pihak terkait untuk pengumpulan data statistik sektoral yang akurat dan terstandarisasi.
+Pengolahan dan Analisis Data: Mengolah data mentah menjadi informasi statistik yang informatif melalui metode deskriptif, spasial, dan visualisasi data.
+Diseminasi dan Publikasi: Menyebarkan hasil olahan data statistik melalui portal web, aplikasi mobile, dashboard interaktif, dan laporan berkala untuk mendukung transparansi publik.
+Pengembangan Sistem Informasi: Merancang, membangun, dan memelihara sistem informasi statistik berbasis web dan mobile yang responsif, aman, dan mudah digunakan.
+Pendampingan Teknis: Memberikan bimbingan teknis kepada SKPA dan pemangku kepentingan lainnya dalam pemanfaatan sistem informasi statistik dan prinsip Satu Data.
+Keterkaitan dengan Proyek Magang
+Proyek re-engineering web GIS inPETA Aceh merupakan implementasi langsung dari Fungsi ke-4, yaitu pengembangan sistem informasi yang lebih modern dan aksesibel. Dengan mengadopsi arsitektur Single Page Application (SPA) berbasis React.js, sistem hasil pengembangan diharapkan dapat:
+Meningkatkan pengalaman pengguna (user experience) melalui antarmuka yang intuitif dan responsif.
+Memperluas jangkauan akses informasi geospasial ke perangkat mobile.
+Menjadi referensi teknis bagi pengembangan sistem informasi lainnya di lingkungan DISKOMINSA Aceh
+BAB III
+LANDASAN TEORI
+3.1 Sistem Informasi Geografis (Geographic Information System/GIS)
+Sistem Informasi Geografis atau Geographic Information System (GIS) adalah sistem berbasis komputer yang digunakan untuk mengumpulkan, menyimpan, mengelola, menganalisis, dan menampilkan data yang memiliki referensi geografis. GIS memungkinkan informasi spasial divisualisasikan dalam bentuk peta digital sehingga hubungan antarwilayah dan persebaran data dapat dipahami dengan lebih mudah.
+GIS banyak digunakan dalam berbagai bidang, seperti pemerintahan, pertanian, peternakan, transportasi, kesehatan, dan mitigasi bencana. Dalam konteks pemerintahan, GIS membantu proses pengambilan keputusan melalui penyajian data wilayah yang lebih terstruktur dan informatif.
+Pada proyek ini, GIS diterapkan pada inPETA Aceh untuk menampilkan data peternakan secara interaktif, termasuk persebaran wilayah, fasilitas peternakan, dan informasi statistik daerah.
+Gambar 3. 1 Konsep Kerja Sistem Web GIS
+Web GIS merupakan pengembangan dari Sistem Informasi Geografis yang memanfaatkan teknologi internet sebagai media distribusi informasi spasial. Dengan Web GIS, pengguna dapat mengakses data geografis melalui browser tanpa perlu menginstal aplikasi desktop khusus.
+Secara umum, Web GIS terdiri dari komponen basis data spasial, server aplikasi, layanan peta, dan antarmuka pengguna berbasis web. Keunggulan Web GIS adalah kemudahan akses, fleksibilitas penggunaan, serta kemampuan integrasi dengan teknologi web modern.
+Dalam sistem inPETA Aceh, Web GIS digunakan untuk menyajikan data peternakan secara interaktif agar informasi lebih mudah diakses oleh masyarakat maupun instansi terkait.
+3.2 Re-Engineering Sistem
+Re-engineering sistem adalah proses rekayasa ulang terhadap sistem yang telah ada dengan tujuan meningkatkan kualitas, performa, tampilan, maupun struktur arsitekturnya. Proses ini dilakukan tanpa harus membangun sistem dari awal, melainkan dengan memodernisasi bagian-bagian yang sudah ada agar lebih sesuai dengan kebutuhan saat ini.
+Re-engineering biasanya dilakukan ketika sistem lama sudah tidak lagi optimal, baik dari sisi tampilan, performa, maupun kompatibilitas dengan teknologi modern. Proses ini dapat mencakup pembaruan antarmuka, migrasi teknologi, restrukturisasi kode program, hingga optimalisasi pengalaman pengguna.
+Pada proyek ini, re-engineering dilakukan terhadap sistem web GIS inPETA Aceh untuk meningkatkan aksesibilitas mobile, memperbaiki user experience, dan mengubah arsitektur sistem menjadi lebih modern menggunakan pendekatan Single Page Application (SPA).
+3.3 Single Page Application (SPA)
+Single Page Application (SPA) adalah pendekatan pengembangan aplikasi web yang hanya memuat satu halaman utama dan memperbarui konten secara dinamis tanpa melakukan reload halaman secara penuh.
+Berbeda dengan Multi-Page Application (MPA), SPA menggunakan mekanisme client-side rendering sehingga perpindahan halaman menjadi lebih cepat dan responsif. Pendekatan ini memberikan pengalaman pengguna yang lebih baik karena navigasi terasa lebih mulus dan interaktif.
+Keunggulan SPA antara lain:
+Navigasi lebih cepat.
+Tidak perlu full page reload.
+Pengalaman pengguna lebih interaktif.
+Mendukung antarmuka modern.
+Pada proyek inPETA Aceh, SPA digunakan untuk meningkatkan performa akses halaman serta mendukung implementasi antarmuka modern berbasis React.js.
+3.4 React.js
+React.js adalah library JavaScript yang digunakan untuk membangun antarmuka pengguna berbasis komponen. React.js mempermudah pengembangan aplikasi web modern yang interaktif, dinamis, dan mudah dipelihara.
+React.js menggunakan konsep component-based architecture, yaitu antarmuka dibangun dari komponen-komponen kecil yang dapat digunakan kembali. React juga menggunakan Virtual DOM untuk meningkatkan efisiensi rendering, sehingga perubahan pada tampilan hanya dilakukan pada bagian yang mengalami pembaruan.
+Keunggulan React.js antara lain:
+Struktur kode modular.
+Komponen dapat digunakan kembali.
+Performa rendering yang baik.
+Cocok untuk SPA.
+Memudahkan pengelolaan state aplikasi.
+Dalam proyek ini, React.js digunakan sebagai teknologi frontend utama untuk membangun sistem inPETA Aceh yang modern, responsif, dan interaktif.
+3.5 Node.js
+Node.js adalah runtime environment JavaScript yang digunakan untuk menjalankan JavaScript di sisi server (backend). Node.js memungkinkan pengembang membangun backend menggunakan JavaScript secara penuh, sehingga pengembangan frontend dan backend dapat menggunakan bahasa yang sama.
+Node.js memiliki arsitektur event-driven dan non-blocking I/O yang membuatnya efisien dalam menangani banyak permintaan. Teknologi ini banyak digunakan untuk membangun REST API, sistem real-time, dan aplikasi web modern.
+Pada proyek inPETA Aceh, Node.js digunakan sebagai backend system untuk mengelola data, autentikasi pengguna, komunikasi API, dan integrasi antara frontend dengan database PostgreSQL.
+Gambar 3. 2 Node.js
+3.6 PostgreSQL
+PostgreSQL adalah sistem manajemen basis data relasional (Relational Database Management System/RDBMS) yang bersifat open-source dan banyak digunakan dalam pengembangan aplikasi modern.
+PostgreSQL dikenal memiliki performa yang stabil, keamanan tinggi, dan kemampuan mengelola data dalam jumlah besar. Selain itu, PostgreSQL juga mendukung pengolahan data spasial, sehingga sangat cocok digunakan dalam pengembangan sistem GIS.
+Pada proyek ini, PostgreSQL digunakan untuk menyimpan data pengguna, data wilayah, data fasilitas peternakan, serta informasi lain yang digunakan oleh sistem inPETA Aceh.
+Gambar 3. 3 PotgreSQL
+3.7 Responsive Web Design
+Responsive Web Design adalah pendekatan perancangan antarmuka web agar tampilan sistem dapat menyesuaikan diri dengan berbagai ukuran layar perangkat, seperti desktop, tablet, dan smartphone.
+Pendekatan ini sangat penting karena pengguna internet saat ini mengakses layanan digital dari berbagai perangkat. Website yang responsif akan memberikan pengalaman penggunaan yang lebih nyaman dan konsisten pada berbagai ukuran layar.
+Prinsip utama responsive web design meliputi:
+Flexible layout.
+Flexible image.
+Media query.
+Adaptive typography.
+Mobile responsiveness.
+Pada proyek ini, responsive web design diterapkan agar seluruh fitur inPETA Aceh dapat diakses dengan baik pada berbagai perangkat.
+3.8 Mobile-First Design
+Mobile-first design adalah pendekatan pengembangan antarmuka yang memprioritaskan tampilan untuk perangkat mobile terlebih dahulu, kemudian disesuaikan untuk layar yang lebih besar seperti tablet dan desktop.
+Pendekatan ini bertujuan memastikan aplikasi tetap nyaman digunakan pada layar kecil dengan interaksi berbasis sentuhan. Mobile-first design membantu pengembang menciptakan antarmuka yang lebih sederhana, fokus, dan efisien.
+Keunggulan mobile-first design antara lain:
+Tampilan lebih sederhana.
+Navigasi lebih fokus.
+Meningkatkan aksesibilitas mobile.
+Mendukung responsive design.
+Meningkatkan kenyamanan pengguna smartphone.
+Dalam proyek ini, pendekatan mobile-first diterapkan untuk meningkatkan aksesibilitas dan pengalaman pengguna pada perangkat mobile.
+Gambar 3. 4 Tampilan Mobile
+3.9 User Experience (UX)
+User Experience (UX) adalah pengalaman yang dirasakan pengguna ketika berinteraksi dengan sebuah sistem atau aplikasi. UX mencakup aspek kenyamanan, kemudahan penggunaan, efisiensi navigasi, dan kepuasan pengguna.
+Sistem dengan UX yang baik akan membantu pengguna menyelesaikan tugas dengan lebih mudah dan cepat. Karena itu, UX menjadi salah satu faktor penting dalam pengembangan aplikasi modern.
+Pada proyek inPETA Aceh, peningkatan UX dilakukan melalui modernisasi tampilan, optimalisasi navigasi mobile, penggunaan card-based interface, dan pengembangan dashboard interaktif.
+3.10 User Interface (UI)
+User Interface (UI) adalah tampilan visual yang menjadi media interaksi antara pengguna dan sistem. UI mencakup elemen-elemen seperti warna, tombol, ikon, tipografi, navigasi, dan tata letak antarmuka.
+UI yang baik tidak hanya menarik secara visual, tetapi juga harus mudah digunakan dan konsisten. Dalam proyek ini, UI dirancang menggunakan pendekatan modern dengan tampilan clean interface, dark mode, dan responsive layout untuk meningkatkan kenyamanan pengguna.
+3.11 Tools dan Teknologi Pendukung
+Dalam pengembangan sistem web GIS inPETA Aceh, digunakan beberapa tools dan teknologi pendukung sebagai berikut:
+No
+Tools/Teknologi
+Fungsi
+1
+React.js
+Frontend SPA
+2
+Node.js
+Backend API
+3
+PostgreSQL
+Database sistem
+4
+AntiGrafity
+Code editor
+5
+Figma
+UI/UX design
+6
+Canva
+Desain visual
+7
+Leaflet
+Library Web GIS
+8
+Lighthouse
+Pengujian performa
+9
+GitHub
+Version control
+Table 3. 1 Tools
+BAB IV
+HASIL DAN PEMBAHASAN
+4.1 Analisis Sistem Lama
+Sebelum dilakukan proses re-engineering, sistem web GIS InPETA Aceh yang digunakan oleh Dinas Peternakan Aceh telah menyediakan fitur dasar pemetaan informasi peternakan berbasis web. Sistem tersebut berfungsi sebagai media penyajian data spasial peternakan di wilayah Provinsi Aceh, seperti informasi wilayah, fasilitas peternakan, dan data pendukung lainnya.
+Berdasarkan hasil observasi selama kegiatan magang, sistem lama telah memiliki beberapa fungsi utama seperti halaman landing page, peta interaktif, informasi fasilitas peternakan, serta halaman informasi umum. Namun, dari sisi antarmuka, arsitektur sistem, dan pengalaman pengguna, masih ditemukan beberapa keterbatasan yang memengaruhi efektivitas penggunaan sistem.
+Gambar 4. 1 GIS Web InPeta Lama
+Gambar 4. 2 Landing page web InPeta Lama
+Gambar 4. 2.1 Web InPeta Mobile Preview
+Berdasarkan hasil analisis, ditemukan beberapa kekurangan pada sistem lama, antara lain:
+Desain antarmuka masih terlihat sederhana dan kurang modern.
+Tata letak konten masih bersifat statis dan kurang interaktif.
+Struktur menu pada halaman GIS terlihat cukup padat.
+Responsivitas mobile masih belum optimal.
+Navigasi antarhalaman masih menggunakan pendekatan Multi-Page Application (MPA).
+Pengalaman pengguna (user experience) belum sepenuhnya mendukung akses modern berbasis mobile.
+Meskipun demikian, sistem lama telah berhasil menyediakan layanan dasar Web GIS yang cukup membantu dalam pengelolaan dan visualisasi data peternakan di Provinsi Aceh.
+4.2 Perancangan Sistem Baru
+Berdasarkan hasil analisis terhadap sistem lama, dilakukan proses re-engineering sistem menggunakan pendekatan modern berbasis Single Page Application (SPA) dengan teknologi React.js. Tujuan utama pengembangan sistem baru adalah meningkatkan aksesibilitas mobile, memperbaiki user experience, serta memodernisasi tampilan antarmuka sistem.
+Sistem baru dikembangkan menggunakan beberapa teknologi utama, yaitu:
+No
+Teknologi
+Fungsi
+1
+React.js
+Frontend SPA
+2
+Node.js
+Backend API
+3
+PostgreSQL
+Database sistem
+4
+Leaflet
+Web GIS
+Table 4. 1 Teknologi dan Fungsi
+Gambar 4. 3 Arsitektur InPeta
+4.3 Implementasi dan Hasil Sistem
+Tahap implementasi dilakukan dengan membangun ulang tampilan frontend, sistem Web GIS, dashboard admin, dan versi mobile menggunakan React.js. Selain itu, backend system juga dikembangkan menggunakan Node.js dan PostgreSQL untuk mendukung pengelolaan data secara terpusat.
+4.3.1 Implementasi Landing Page
+Landing page baru dirancang menggunakan tampilan modern berbasis card interface dengan pendekatan responsive layout. Sistem juga mendukung dark mode dan mobile navigation untuk meningkatkan kenyamanan pengguna.
+Gambar 4. 4 Tampilan landing page dekstop & mobile InPeta Baru
+4.3.2 Implementasi Web GIS
+Fitur Web GIS dikembangkan menggunakan Leaflet dengan dukungan polygon wilayah, marker fasilitas peternakan, dan filtering data spasial. Tampilan GIS baru dirancang lebih sederhana dan modern dibandingkan sistem sebelumnya.
+Gambar 4. 5 Tampilan GIS dekstop & Mobile
+4.3.3 Implementasi Dashboard Admin
+Dashboard admin dikembangkan untuk membantu proses pengelolaan data wilayah, berita, fasilitas, dan informasi lainnya secara terpusat. Sistem dashboard menggunakan tampilan modern berbasis SPA sehingga proses navigasi menjadi lebih cepat tanpa reload halaman penuh.
+Dashboard admin mempermudah proses pengelolaan data serta meningkatkan efisiensi pengoperasian sistem.
+No 
+Fitur
+Back-End
+Front-End
+Hasil
+1
+Login Admin
+Login Admin
+Login Admin
+✔️
+2
+Data Wilayah
+CRUD Data Wilayah
+Data Wilayah
+✔️
+3
+Landing Page
+CRUD Hero & Conten
+Hero & Conten
+✔️
+4
+CRUD Logo
+Logo
+✔️
+5
+CRUD Statistik Hero
+Statistik Hero
+✔️
+6
+CRUD Struktur Navbar
+Struktur Navbar
+✔️
+7
+CRUD Kelola tentang
+Kelola tentang
+✔️
+8
+CRUD Poin Tentang
+Poin Tentang
+✔️
+9
+CRUD Fitur Unggulan
+Fitur Unggulan
+✔️
+10
+CRUD FAQ
+FAQ
+✔️
+11
+CRUD Berita
+Berita
+✔️
+12
+CRUD Footer
+Footer
+✔️
+13
+Fasilitas & Lokasi
+CRUD Fasilitas
+Fasilitas
+✔️
+14
+Pengaturan Akun
+CRUD Pengaturan Akun
+ 
+✔️
+15
+CRUD Akun Admin
+ 
+✔️
+16
+API Keys & Export
+CRUD API Key
+ 
+✔️
+17
+GIS 
+ 
+Batas Wilayah 
+✔️
+18
+ 
+Lahan & Habitat
+❌
+19
+ 
+Pukeswan & Pasar Ternak
+✔️
+20
+ 
+RPH & Klinik Hewan
+✔️
+21
+ 
+Geospasila & Polygon
+❌
+22
+ 
+Reset Peta
+❌
+Table 4. 2 Testing Fitur
+4.3.4 Hasil Pengujian Sistem
+Pengujian dilakukan pada beberapa fitur utama sistem untuk memastikan seluruh fungsi berjalan dengan baik.
+Berdasarkan hasil pengujian, sistem yang dikembangkan telah berjalan sesuai dengan kebutuhan dan mampu meningkatkan kualitas tampilan, performa, serta pengalaman pengguna pada platform InPETA Aceh.
+BAB V
+KESIMPULAN DAN SARAN
+5.1 Kesimpulan
+Berdasarkan kegiatan magang yang telah dilaksanakan di UPTD Statistik Dinas Komunikasi, Informatika, dan Persandian Aceh, dapat disimpulkan bahwa proses re-engineering Web GIS InPETA Aceh berhasil dilakukan melalui penerapan arsitektur Single Page Application (SPA) berbasis React.js. Pengembangan yang dilakukan mencakup perancangan ulang antarmuka pengguna, peningkatan responsivitas pada berbagai perangkat, serta pengembangan sistem manajemen konten yang mendukung pengelolaan informasi secara lebih fleksibel dan efisien. Hasil implementasi menunjukkan bahwa sistem yang dikembangkan mampu memberikan pengalaman pengguna yang lebih baik melalui navigasi yang lebih cepat, tampilan yang lebih modern, serta aksesibilitas yang optimal pada perangkat desktop maupun mobile. Dengan demikian, tujuan kegiatan magang untuk meningkatkan kualitas layanan informasi peternakan berbasis web, memperbaiki user experience, dan mendukung transformasi digital pengelolaan data peternakan di Provinsi Aceh telah tercapai dengan baik.
+5.2 Saran
+5.2.1 Saran untuk Instansi
+Sistem inPETA Aceh diharapkan dapat terus dikembangkan secara berkelanjutan, khususnya pada fitur analisis data spasial dan visualisasi statistik interaktif agar informasi yang disajikan menjadi lebih lengkap dan informatif.
+Perlu dilakukan pembaruan data secara berkala untuk menjaga akurasi dan relevansi informasi peternakan yang ditampilkan kepada masyarakat.
+Pengembangan fitur keamanan sistem dan manajemen hak akses pengguna perlu ditingkatkan guna menjaga integritas data dan keamanan sistem.
+Instansi diharapkan dapat mempertimbangkan pengembangan layanan berbasis mobile application di masa mendatang agar aksesibilitas sistem menjadi lebih optimal.
+Perlu dilakukan evaluasi usability secara berkala dengan melibatkan pengguna langsung untuk meningkatkan kualitas user experience sistem.
+5.2.2 Saran untuk Mahasiswa
+Mahasiswa yang melaksanakan kegiatan magang diharapkan mampu meningkatkan kemampuan teknis, komunikasi, dan kerja sama tim selama berada di lingkungan instansi.
+Mahasiswa disarankan untuk mempelajari teknologi pengembangan web modern seperti React.js, Node.js, dan database PostgreSQL agar lebih siap menghadapi kebutuhan industri digital saat ini.
+Mahasiswa perlu membiasakan diri dalam mendokumentasikan proses pengembangan sistem secara terstruktur agar mempermudah penyusunan laporan magang maupun pengembangan proyek di masa mendatang.
+Mahasiswa diharapkan dapat lebih aktif dalam mencari pengalaman praktik langsung agar mampu memahami penerapan ilmu yang diperoleh selama perkuliahan.
+5.2.3 Saran untuk Pihak Kampus
+Pihak kampus diharapkan dapat memperluas kerja sama dengan instansi pemerintahan maupun perusahaan teknologi agar mahasiswa memperoleh lebih banyak kesempatan magang yang relevan dengan bidang keilmuan.
+Kampus diharapkan dapat meningkatkan pembelajaran berbasis praktik, khususnya pada pengembangan web modern, UI/UX design, dan pengembangan sistem informasi berbasis GIS.
+Perlu adanya pelatihan atau workshop tambahan terkait teknologi industri terkini agar mahasiswa lebih siap menghadapi dunia kerja profesional.
+Kampus diharapkan dapat terus mendukung mahasiswa dalam proses pengembangan kompetensi teknis maupun soft skill selama pelaksanaan kegiatan magang.
+DAFTAR PUSTAKA
+Aceh, P. (2016). Peraturan Gubernur Aceh Nomor 119 Tahun 2016 tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi dan Tata Kerja Dinas Komunikasi, Informatika dan Persandian Aceh. Pemerintah Aceh.
+Aceh, P. (2020). Peraturan Gubernur Aceh Nomor 61 Tahun 2020 tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi dan Tata Kerja UPTD Statistik pada Dinas Komunikasi, Informatika dan Persandian Aceh. Pemerintah Aceh.
+Aceh, P. (2024). Peraturan Gubernur Aceh Nomor 01 Tahun 2024 tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi dan Tata Kerja Satuan Kerja Perangkat Aceh, Cabang Dinas dan UPTD. Pemerintah Aceh.
+Chaffey, D. (2019). Digital Business and E-Commerce Management (7th ed.). Pearson Education.
+Garrett, J. J. (2011). The Elements of User Experience: User-Centered Design for the Web and Beyond (2nd ed.). New Riders.
+Haklay, M. (2010). Interacting with Geographical Information Systems. Wiley.
+Nielsen, J. (2012). Usability 101: Introduction to Usability. Nielsen Norman Group.
+Pressman, R. S., & Maxim, B. R. (2020). Software Engineering: A Practitioner’s Approach (9th ed.). McGraw-Hill Education.
+Sommerville, I. (2016). Software Engineering (10th ed.). Pearson Education.
+Welling, L., & Thomson, L. (2017). PHP and MySQL Web Development (5th ed.). Addison-Wesley.
+React Team. (2026). React Documentation. Diakses pada 12 Mei 2026 dari React Official Website
+Node.js Foundation. (2026). Node.js Documentation. Diakses pada 12 Mei 2026 dari Node.js Official Website
+PostgreSQL Global Development Group. (2026). PostgreSQL Documentation. Diakses pada 12 Mei 2026 dari PostgreSQL Official Website
+Leaflet Team. (2026). Leaflet Documentation. Diakses pada 12 Mei 2026 dari Leaflet Official Website
+Mozilla Developer Network. (2026). Responsive Web Design Basics. Diakses pada 12 Mei 2026 dari MDN Web Docs
+W3C. (2025). Mobile Accessibility Guidelines. Diakses pada 12 Mei 2026 dari W3C Official Website
+Google Developers. (2025). Lighthouse Performance Documentation. Diakses pada 12 Mei 2026 dari Google Lighthouse Documentation
+LAMPIRAN DOKUMENTASI 
+Gambar 5. 1 GIS (Peta) PageGambar 5. 1 GIS (Peta) PageGambar 5. 2 Proses NgodingGambar 5. 2 Proses Ngoding
+Gambar 5. 1 GIS (Peta) Page
+Gambar 5. 1 GIS (Peta) Page
+Gambar 5. 1 GIS (Peta) Page
+Gambar 5. 2 Proses Ngoding
+Gambar 5. 2 Proses Ngoding
+Gambar 5. 2 Proses Ngoding
+Gambar 5. 3 Login PageGambar 5. 3 Login PageGambar 5. 4 Home PageGambar 5. 4 Home Page
+Gambar 5. 3 Login Page
+Gambar 5. 3 Login Page
+Gambar 5. 3 Login Page
+Gambar 5. 4 Home Page
+Gambar 5. 4 Home Page
+Gambar 5. 4 Home Page
