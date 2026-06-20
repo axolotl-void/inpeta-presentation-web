@@ -96,15 +96,36 @@ export default function App() {
       {/* ========================================== */}
       <div className="scroll-content" id="scroll-content">
 
-        {/* ── SECTION 1: HERO COVER ── */}
+        {/* ── SECTION 1: HERO COVER — Cinematic ── */}
         <section className="scroll-section hero-section" id="section-1">
           <div className="section-inner hero-inner">
             <div className="hero-badge">
-              <Sparkles size={14} /> DISEMINASI LAPORAN MAGANG
+              DISEMINASI LAPORAN MAGANG
             </div>
             
-            <h1 className="hero-title text-gradient">
-              RE-ENGINEERING SISTEM WEB GIS INPETA ACEH
+            {/* Split Title — Mixed Weight Typography */}
+            <h1 className="hero-title-block">
+              <span className="hero-line hero-line-1">
+                {['RE-ENGINEERING'].map((word, i) => (
+                  <span key={i} className="word-reveal" style={{ animationDelay: `${0.8 + i * 0.08}s` }}>
+                    {word}
+                  </span>
+                ))}
+              </span>
+              <span className="hero-line hero-line-2">
+                {['SISTEM', 'WEB', 'GIS'].map((word, i) => (
+                  <span key={i} className="word-reveal" style={{ animationDelay: `${1.0 + i * 0.08}s` }}>
+                    {word}
+                  </span>
+                ))}
+              </span>
+              <span className="hero-line hero-line-3">
+                {['inPETA', 'Aceh'].map((word, i) => (
+                  <span key={i} className="word-reveal hero-line-3-text" style={{ animationDelay: `${1.25 + i * 0.1}s` }}>
+                    {word}
+                  </span>
+                ))}
+              </span>
             </h1>
             
             {/* Glass Frame Subtitle */}
@@ -114,39 +135,39 @@ export default function App() {
               </p>
             </div>
 
-            {/* Profile Cards with Photos */}
+            {/* Profile Cards — Premium */}
             <div className="profile-cards-row">
-              <div className="profile-card card-blue" id="card-mahasiswa">
+              <div className="profile-card" id="card-mahasiswa">
                 <div className="profile-photo-wrapper">
                   <img src={photoYogi} alt="Yogi Prasetya Sadewa" className="profile-photo" />
                 </div>
-                <span className="profile-card-label">MAHASISWA</span>
+                <span className="profile-card-label">Mahasiswa</span>
                 <p className="profile-card-name">Yogi Prasetya Sadewa</p>
                 <span className="profile-card-id">NIM. 23210060</span>
               </div>
 
-              <div className="profile-card card-green" id="card-dosen">
+              <div className="profile-card" id="card-dosen">
                 <div className="profile-photo-wrapper">
                   <img src={photoMukhroji} alt="Mukhroji, S.ST., M.T." className="profile-photo" />
                 </div>
-                <span className="profile-card-label">DOSEN PEMBIMBING</span>
+                <span className="profile-card-label">Dosen Pembimbing</span>
                 <p className="profile-card-name">Mukhroji, S.ST., M.T.</p>
                 <span className="profile-card-id">NIDN. 1326099001</span>
               </div>
 
-              <div className="profile-card card-amber" id="card-mentor">
+              <div className="profile-card" id="card-mentor">
                 <div className="profile-photo-wrapper">
                   <img src={photoBobby} alt="Bobby Novrizan, S.Si" className="profile-photo" />
                 </div>
-                <span className="profile-card-label">MENTOR MITRA</span>
+                <span className="profile-card-label">Mentor Mitra</span>
                 <p className="profile-card-name">Bobby Novrizan, S.Si</p>
                 <span className="profile-card-id">NIP. 198511162024211008</span>
               </div>
             </div>
 
             <div className="scroll-cta">
-              <ChevronDown size={20} className="bounce-arrow" />
-              <span>Scroll ke bawah untuk melihat presentasi</span>
+              <ChevronDown size={18} className="bounce-arrow" />
+              <span>Scroll untuk melihat presentasi</span>
             </div>
           </div>
         </section>

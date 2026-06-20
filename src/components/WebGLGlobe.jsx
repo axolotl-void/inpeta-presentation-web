@@ -14,13 +14,14 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
   const earthRef = useRef(null);
   const markerRef = useRef(null);
   const animationRef = useRef(null);
+  const mountTimeRef = useRef(performance.now());
   const [apiLoaded, setApiLoaded] = useState(false);
 
   // State values for interpolation
   const currentCoords = useRef({ lat: 0, lng: 95.33, zoom: 2.0 });
   const [styles, setStyles] = useState({
-    opacity: 1,
-    transform: 'scale(1) translate(0px, 0px)',
+    opacity: 0,
+    transform: 'translateY(120vh)',
     display: 'block'
   });
 
@@ -101,6 +102,13 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
       let targetDisplay = 'block';
       let shouldOpenPopup = false;
 
+      // ── Cinematic entrance: globe rises from below ──
+      const elapsedSinceMount = (now - mountTimeRef.current) / 1000; // seconds
+      const entranceDuration = 1.2; // seconds for globe to rise
+      const entranceProgress = Math.min(elapsedSinceMount / entranceDuration, 1);
+      // Smooth easing: cubic-bezier approximation
+      const entranceEase = 1 - Math.pow(1 - entranceProgress, 3);
+
       // ── Interpolate values based on Scroll Progress ──
       if (p < 0.11) {
         // Section 1: Hero Cover (Center-Bottom, Rotating)
@@ -109,11 +117,12 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
         // Interpolate longitude from current auto-rotation to Aceh
         targetLng = autoRotateLng * (1 - progress) + 95.33 * progress;
         targetZoom = 3.2 * (1 - progress) + 6.2 * progress;
-        targetOpacity = 1;
+        targetOpacity = entranceEase; // fade in during entrance
 
-        // Shift down by 35vh in Cover section, transitioning smoothly to 0vh in Section 2
-        const yTrans = (1 - progress) * 35;
-        targetTransform = `translateY(${yTrans}vh)`;
+        // Globe rises from 120vh → 35vh during entrance, then transitions to 0vh as user scrolls
+        const baseY = (1 - progress) * 35;
+        const entranceY = (1 - entranceEase) * 85; // 120vh - 35vh = 85vh extra offset
+        targetTransform = `translateY(${baseY + entranceY}vh)`;
       } else if (p < 0.22) {
         // Section 2: Profil Instansi (Aceh Zoomed-in)
         targetLat = 5.5615;
