@@ -8,6 +8,7 @@ import InteractiveMap from './components/InteractiveMap';
 import PerformanceGauges from './components/PerformanceGauges';
 import FeatureTable from './components/FeatureTable';
 import Scene3D from './components/Scene3D';
+import WebGLGlobe from './components/WebGLGlobe';
 import SectionIndicator from './components/SectionIndicator';
 import useScrollProgress from './hooks/useScrollProgress';
 
@@ -19,10 +20,16 @@ export default function App() {
     document.body.className = 'dark-theme';
   }, []);
 
+  const showGlobe = scrollProgress < 0.35 || scrollProgress >= 0.85;
+  const showLaptop = scrollProgress >= 0.35 && scrollProgress < 0.85;
+
   return (
     <>
+      {/* === WebGL EARTH 3D LAYER (fixed behind everything) === */}
+      {showGlobe && <WebGLGlobe scrollProgress={scrollProgress} />}
+
       {/* === 3D CANVAS LAYER (fixed behind everything) === */}
-      <Scene3D scrollProgress={scrollProgress} />
+      {showLaptop && <Scene3D scrollProgress={scrollProgress} />}
 
       {/* === FLOATING NAV BAR === */}
       <nav className="navbar-3d" id="navbar-3d">

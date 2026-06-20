@@ -1,16 +1,19 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
-import Globe3D from './Globe3D';
 import Laptop3D from './Laptop3D';
 
 /*
  * Scene3D — Full-screen fixed Canvas behind all HTML content.
- * Receives scrollProgress (0..1) from parent and passes to children.
+ * Renders the 3D Laptop. The mounting is managed by App.jsx to prevent WebGL context conflicts.
  */
 export default function Scene3D({ scrollProgress = 0 }) {
   return (
-    <div className="canvas-container" id="canvas-container">
+    <div 
+      className="canvas-container" 
+      id="canvas-container"
+      style={{ pointerEvents: 'none' }}
+    >
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
         dpr={[1, 1.5]}
@@ -52,7 +55,6 @@ export default function Scene3D({ scrollProgress = 0 }) {
           />
 
           {/* 3D Objects */}
-          <Globe3D scrollProgress={scrollProgress} />
           <Laptop3D scrollProgress={scrollProgress} />
         </Suspense>
       </Canvas>
