@@ -46,7 +46,7 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
         zoom: 2.0,
         dragging: false,
         scrollWheelZoom: false,
-        sky: true,
+        sky: false,
         atmosphere: true
       });
 
