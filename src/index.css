@@ -47,6 +47,18 @@
 
 html, body {
   background-color: var(--bg-primary);
+  /* Seamless CSS Starfield Background */
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.55) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.45) 1px, transparent 1px),
+    radial-gradient(circle at 10% 85%, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+    radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.6) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 85% 90%, rgba(255, 255, 255, 0.5) 2px, transparent 2px);
+  background-size: 550px 550px;
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -72,10 +84,10 @@ strong { color: var(--text-main); }
 
 .earth-container-3d {
   position: fixed;
-  top: 0;
+  top: -20vh;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 140vh;
   z-index: 0;
   pointer-events: none;
   background: transparent;
