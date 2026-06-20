@@ -170,13 +170,13 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
             // Close popup elsewhere
             if (markerRef.current.isOpen) {
               // WebGL Earth marker popup close method
-              earthRef.current.closePopup();
+              markerRef.current.closePopup();
               markerRef.current.isOpen = false;
             }
           }
         }
       } catch (err) {
-        // Fail-safe
+        console.warn("Error updating WebGL Earth Camera:", err);
       }
 
       // Update CSS state
