@@ -24,6 +24,11 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
     display: 'block'
   });
 
+  const scrollProgressRef = useRef(scrollProgress);
+  useEffect(() => {
+    scrollProgressRef.current = scrollProgress;
+  }, [scrollProgress]);
+
   // Check if WebGL Earth API is loaded from index.html
   useEffect(() => {
     const checkApi = setInterval(() => {
@@ -87,7 +92,7 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
       const degPerMs = 0.005; // slow rotation
       autoRotateLng = (autoRotateLng + elapsed * degPerMs) % 360;
 
-      const p = scrollProgress;
+      const p = scrollProgressRef.current;
       let targetLat = 0;
       let targetLng = autoRotateLng;
       let targetZoom = 2.0;
@@ -201,7 +206,7 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [scrollProgress]);
+  }, []);
 
   return (
     <div 
