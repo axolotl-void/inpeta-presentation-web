@@ -12,6 +12,11 @@ import WebGLGlobe from './components/WebGLGlobe';
 import SectionIndicator from './components/SectionIndicator';
 import useScrollProgress from './hooks/useScrollProgress';
 
+// Profile photos
+import photoYogi from './assets/yogi-prasetya.jpeg';
+import photoMukhroji from './assets/mukhroji.jpg';
+import photoBobby from './assets/Bobby-Novrizan.png';
+
 export default function App() {
   const totalSections = 9;
   const { scrollProgress, currentSection } = useScrollProgress(totalSections);
@@ -102,42 +107,40 @@ export default function App() {
               RE-ENGINEERING SISTEM WEB GIS INPETA ACEH
             </h1>
             
-            <p className="hero-subtitle">
-              Berbasis Single Page Application (SPA) Menggunakan React.js Untuk Meningkatkan Aksesibilitas Mobile Dan User Experience di UPTD Statistik DISKOMINSA Aceh
-            </p>
+            {/* Glass Frame Subtitle */}
+            <div className="subtitle-glass-frame">
+              <p className="hero-subtitle">
+                Berbasis Single Page Application (SPA) Menggunakan React.js Untuk Meningkatkan Aksesibilitas Mobile Dan User Experience di UPTD Statistik DISKOMINSA Aceh
+              </p>
+            </div>
 
-            <div className="hero-cards">
-              <div className="hero-card">
-                <div className="hero-card-icon" style={{ background: 'var(--primary-glow)' }}>
-                  <User size={20} color="var(--primary)" />
+            {/* Profile Cards with Photos */}
+            <div className="profile-cards-row">
+              <div className="profile-card card-blue" id="card-mahasiswa">
+                <div className="profile-photo-wrapper">
+                  <img src={photoYogi} alt="Yogi Prasetya Sadewa" className="profile-photo" />
                 </div>
-                <div style={{ textAlign: 'left' }}>
-                  <span className="hero-label">MAHASISWA</span>
-                  <p className="hero-name">Yogi Prasetya Sadewa</p>
-                  <span className="hero-sub">NIM. 23210060</span>
-                </div>
+                <span className="profile-card-label">MAHASISWA</span>
+                <p className="profile-card-name">Yogi Prasetya Sadewa</p>
+                <span className="profile-card-id">NIM. 23210060</span>
               </div>
 
-              <div className="hero-card">
-                <div className="hero-card-icon" style={{ background: 'rgba(16, 185, 129, 0.15)' }}>
-                  <GraduationCap size={20} color="var(--accent)" />
+              <div className="profile-card card-green" id="card-dosen">
+                <div className="profile-photo-wrapper">
+                  <img src={photoMukhroji} alt="Mukhroji, S.ST., M.T." className="profile-photo" />
                 </div>
-                <div style={{ textAlign: 'left' }}>
-                  <span className="hero-label">DOSEN PEMBIMBING</span>
-                  <p className="hero-name">Mukhroji, S.ST., M.T.</p>
-                  <span className="hero-sub">NIDN. 1326099001</span>
-                </div>
+                <span className="profile-card-label">DOSEN PEMBIMBING</span>
+                <p className="profile-card-name">Mukhroji, S.ST., M.T.</p>
+                <span className="profile-card-id">NIDN. 1326099001</span>
               </div>
 
-              <div className="hero-card">
-                <div className="hero-card-icon" style={{ background: 'rgba(245, 158, 11, 0.15)' }}>
-                  <Users size={20} color="var(--warning)" />
+              <div className="profile-card card-amber" id="card-mentor">
+                <div className="profile-photo-wrapper">
+                  <img src={photoBobby} alt="Bobby Novrizan, S.Si" className="profile-photo" />
                 </div>
-                <div style={{ textAlign: 'left' }}>
-                  <span className="hero-label">MENTOR MITRA</span>
-                  <p className="hero-name">Bobby Novrizan, S.Si</p>
-                  <span className="hero-sub">NIP. 198511162024211008</span>
-                </div>
+                <span className="profile-card-label">MENTOR MITRA</span>
+                <p className="profile-card-name">Bobby Novrizan, S.Si</p>
+                <span className="profile-card-id">NIP. 198511162024211008</span>
               </div>
             </div>
 

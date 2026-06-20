@@ -294,7 +294,7 @@ strong { color: var(--text-main); }
 }
 
 .scroll-cta {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -311,6 +311,233 @@ strong { color: var(--text-main); }
 @keyframes bounceDown {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(8px); }
+}
+
+/* ============================
+   SUBTITLE GLASS FRAME
+   ============================ */
+.subtitle-glass-frame {
+  background: rgba(10, 14, 23, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 16px;
+  padding: 1.2rem 2rem;
+  max-width: 850px;
+  margin: 0 auto 2.5rem auto;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(59, 130, 246, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  animation: glassFrameIn 1.4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.subtitle-glass-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), rgba(16, 185, 129, 0.3), transparent);
+  animation: shimmerLine 4s ease-in-out infinite;
+}
+
+@keyframes shimmerLine {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+}
+
+@keyframes glassFrameIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    backdrop-filter: blur(20px);
+  }
+}
+
+.subtitle-glass-frame .hero-subtitle {
+  margin: 0;
+  animation: none;
+  font-size: clamp(0.88rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ============================
+   PROFILE CARDS ROW
+   ============================ */
+.profile-cards-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(10, 14, 23, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.8rem 1.5rem 1.4rem;
+  width: 260px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: cardSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 20px 20px 0 0;
+  transition: opacity 0.4s ease;
+}
+
+.profile-card.card-blue::before {
+  background: linear-gradient(90deg, var(--primary), #6366f1);
+}
+
+.profile-card.card-green::before {
+  background: linear-gradient(90deg, var(--accent), #34d399);
+}
+
+.profile-card.card-amber::before {
+  background: linear-gradient(90deg, var(--warning), #fbbf24);
+}
+
+.profile-card:nth-child(1) { animation-delay: 0.6s; }
+.profile-card:nth-child(2) { animation-delay: 0.85s; }
+.profile-card:nth-child(3) { animation-delay: 1.1s; }
+
+.profile-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(59, 130, 246, 0.1);
+}
+
+.profile-card.card-green:hover {
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(16, 185, 129, 0.1);
+}
+
+.profile-card.card-amber:hover {
+  border-color: rgba(245, 158, 11, 0.25);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(245, 158, 11, 0.1);
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Profile Photo */
+.profile-photo-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  margin-bottom: 0.25rem;
+}
+
+.profile-card.card-blue .profile-photo-wrapper {
+  background: linear-gradient(135deg, var(--primary), #6366f1);
+}
+
+.profile-card.card-green .profile-photo-wrapper {
+  background: linear-gradient(135deg, var(--accent), #34d399);
+}
+
+.profile-card.card-amber .profile-photo-wrapper {
+  background: linear-gradient(135deg, var(--warning), #fbbf24);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-primary);
+  display: block;
+}
+
+.profile-card-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.profile-card.card-blue .profile-card-label {
+  color: var(--primary);
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.profile-card.card-green .profile-card-label {
+  color: var(--accent);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.profile-card.card-amber .profile-card-label {
+  color: var(--warning);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.profile-card-name {
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  margin: 0.1rem 0;
+  line-height: 1.3;
+}
+
+.profile-card-id {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 /* ============================
@@ -544,6 +771,20 @@ strong { color: var(--text-main); }
     align-items: center;
   }
 
+  .profile-cards-row {
+    gap: 1rem;
+  }
+
+  .profile-card {
+    width: 240px;
+    padding: 1.4rem 1.2rem 1.2rem;
+  }
+
+  .subtitle-glass-frame {
+    padding: 1rem 1.2rem;
+    margin-bottom: 2rem;
+  }
+
   .section-indicator {
     right: 0.5rem;
   }
@@ -572,7 +813,7 @@ strong { color: var(--text-main); }
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .hero-subtitle {
