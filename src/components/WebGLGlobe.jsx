@@ -75,7 +75,6 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
 
   // Animation & Interpolation Loop
   useEffect(() => {
-    if (!earthRef.current) return;
 
     let before = performance.now();
     let autoRotateLng = 95.33;
@@ -156,31 +155,33 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
       currentCoords.current.lng += diffLng * lerpSpeed;
 
       // Update WebGL Earth Camera
-      try {
-        earthRef.current.setView(
-          [currentCoords.current.lat, currentCoords.current.lng],
-          currentCoords.current.zoom
-        );
+      if (earthRef.current) {
+        try {
+          earthRef.current.setView(
+            [currentCoords.current.lat, currentCoords.current.lng],
+            currentCoords.current.zoom
+          );
 
-        // Control info popup based on section
-        if (markerRef.current) {
-          if (shouldOpenPopup) {
-            // Open popup when centered on Aceh
-            if (!markerRef.current.isOpen) {
-              markerRef.current.openPopup();
-              markerRef.current.isOpen = true;
-            }
-          } else {
-            // Close popup elsewhere
-            if (markerRef.current.isOpen) {
-              // WebGL Earth marker popup close method
-              markerRef.current.closePopup();
-              markerRef.current.isOpen = false;
+          // Control info popup based on section
+          if (markerRef.current) {
+            if (shouldOpenPopup) {
+              // Open popup when centered on Aceh
+              if (!markerRef.current.isOpen) {
+                markerRef.current.openPopup();
+                markerRef.current.isOpen = true;
+              }
+            } else {
+              // Close popup elsewhere
+              if (markerRef.current.isOpen) {
+                // WebGL Earth marker popup close method
+                markerRef.current.closePopup();
+                markerRef.current.isOpen = false;
+              }
             }
           }
+        } catch (err) {
+          console.warn("Error updating WebGL Earth Camera:", err);
         }
-      } catch (err) {
-        console.warn("Error updating WebGL Earth Camera:", err);
       }
 
       // Update CSS state
