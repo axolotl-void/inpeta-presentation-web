@@ -82,6 +82,24 @@ strong { color: var(--text-main); }
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.earth-atmosphere-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 74vh;
+  height: 74vh;
+  border-radius: 50%;
+  background: transparent;
+  /* Cinematic vibrant cyan-blue outer and inner glows */
+  box-shadow: 0 0 100px rgba(59, 130, 246, 0.55),
+              0 0 45px rgba(59, 130, 246, 0.35),
+              inset 0 0 70px rgba(59, 130, 246, 0.45);
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: screen;
+}
+
 /* ============================
    FLOATING NAVBAR
    ============================ */

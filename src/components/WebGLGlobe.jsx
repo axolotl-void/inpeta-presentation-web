@@ -99,13 +99,17 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
 
       // ── Interpolate values based on Scroll Progress ──
       if (p < 0.11) {
-        // Section 1: Hero Cover (Center, Rotating)
+        // Section 1: Hero Cover (Center-Bottom, Rotating)
         const progress = p / 0.11;
         targetLat = 0 * (1 - progress) + 5.56 * progress;
         // Interpolate longitude from current auto-rotation to Aceh
         targetLng = autoRotateLng * (1 - progress) + 95.33 * progress;
-        targetZoom = 2.0 * (1 - progress) + 4.8 * progress;
+        targetZoom = 3.2 * (1 - progress) + 6.2 * progress;
         targetOpacity = 1;
+
+        // Shift down by 35vh in Cover section, transitioning smoothly to 0vh in Section 2
+        const yTrans = (1 - progress) * 35;
+        targetTransform = `translateY(${yTrans}vh)`;
       } else if (p < 0.22) {
         // Section 2: Profil Instansi (Aceh Zoomed-in)
         targetLat = 5.5615;
@@ -214,6 +218,14 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
           width: '100%',
           height: '100%',
           background: 'transparent'
+        }}
+      />
+      {/* Atmosphere Glow Overlay */}
+      <div 
+        className="earth-atmosphere-glow" 
+        style={{
+          opacity: scrollProgress < 0.11 ? (1 - scrollProgress / 0.11) : 0,
+          transition: 'opacity 0.4s ease'
         }}
       />
     </div>
