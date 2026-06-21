@@ -173,51 +173,58 @@ export default function App() {
         </section>
 
         {/* ── SECTION 2: PROFIL INSTANSI ── */}
-        <section className="scroll-section" id="section-2">
-          <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 02 — Dinas Komunikasi, Informatika, dan Persandian (DISKOMINSA) Aceh</span>
-              <h2 className="section-title">Profil Instansi &amp; Mitra Magang</h2>
-            </div>
+        <section className={`scroll-section instansi-section ${currentSection === 2 ? 'active' : ''}`} id="section-2">
+          <div className="section-inner instansi-inner">
+            <div className="split-layout-left">
+              <div className="section-header-modern">
+                <span className="section-tag-modern">BAGIAN 02 — DISKOMINSA ACEH</span>
+                <h2 className="section-title-modern">Profil Instansi &amp; Mitra Magang</h2>
+              </div>
 
-            <div className="content-grid two-col">
-              <div className="glass-card-3d">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <MapPin size={18} /> UPTD Statistik DISKOMINSA Aceh
+              {/* Main Profile Card */}
+              <div className="premium-glass-card card-reveal-1">
+                <h3 className="card-inner-title">
+                  <MapPin size={18} className="icon-pulse" /> UPTD Statistik DISKOMINSA Aceh
                 </h3>
-                <p style={{ marginBottom: '1rem', fontSize: '0.95rem' }}>
-                  UPTD Statistik (dibentuk berlandaskan Pergub Aceh No. 61 Tahun 2020) bertugas menyiapkan bahan perumusan kebijakan teknis di bidang <strong>pengumpulan, pengolahan, analisis, diseminasi data statistik daerah</strong>, serta pengembangan sistem informasi statistik terintegrasi dalam ekosistem <strong>Satu Data Aceh</strong>.
+                <p className="card-description">
+                  UPTD Statistik (Pergub Aceh No. 61/2020) menyelenggarakan perumusan kebijakan teknis di bidang <strong>pengumpulan, pengolahan, analisis, diseminasi data statistik sektoral</strong> untuk mendukung ekosistem <strong>Satu Data Aceh</strong>.
                 </p>
                 
-                <div className="timeline">
-                  <div className="timeline-item">
-                    <div className="timeline-date">30 Maret 2026 – 08 Juni 2026</div>
-                    <div className="timeline-title">Durasi Pelaksanaan Magang</div>
-                    <p style={{ fontSize: '0.85rem' }}>Dilaksanakan secara on-site di UPTD Statistik DISKOMINSA Aceh (Jln. Tgk. Cot Plieng No. 48, Kuta Alam, Banda Aceh).</p>
+                <div className="modern-timeline">
+                  <div className="timeline-node">
+                    <div className="node-dot"></div>
+                    <div className="node-content">
+                      <span className="node-date">30 Maret – 08 Juni 2026</span>
+                      <span className="node-title">Durasi Pelaksanaan Magang</span>
+                      <p className="node-desc">Dilaksanakan secara on-site di UPTD Statistik DISKOMINSA Aceh (Jln. Tgk. Cot Plieng No. 48, Kuta Alam, Banda Aceh).</p>
+                    </div>
                   </div>
-                  <div className="timeline-item" style={{ marginBottom: 0 }}>
-                    <div className="timeline-date">Fungsi Ke-4 UPTD Statistik</div>
-                    <div className="timeline-title">Pengembangan Sistem Informasi</div>
-                    <p style={{ fontSize: '0.85rem' }}>Proyek re-engineering inPETA ini merupakan implementasi langsung dari tugas pengembangan sistem yang modern, aman, dan mobile-friendly.</p>
+                  <div className="timeline-node">
+                    <div className="node-dot"></div>
+                    <div className="node-content">
+                      <span className="node-date">Fungsi Ke-4 UPTD Statistik</span>
+                      <span className="node-title">Pengembangan Sistem Informasi</span>
+                      <p className="node-desc">Proyek re-engineering inPETA ini merupakan implementasi langsung dari tugas pengembangan sistem yang modern, aman, dan mobile-friendly.</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div className="glass-card-3d" style={{ background: 'rgba(255, 255, 255, 0.02)' }}>
-                  <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>Visi Utama Instansi</h4>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-                    "Terwujudnya masyarakat yang mampu memilih dan memilah konsumsi informasi untuk membangun masyarakat Aceh yang beradab, beradat dan bermartabat dalam nuansa Islami serta tumbuhnya partisipasi dalam proses pembangunan."
-                  </p>
-                </div>
+              {/* Visi Card */}
+              <div className="premium-glass-card card-reveal-2 card-accent-green">
+                <h4 className="card-inner-subtitle accent-green">Visi Utama Instansi</h4>
+                <p className="card-vision-text">
+                  "Terwujudnya masyarakat yang mampu memilih dan memilah konsumsi informasi untuk membangun masyarakat Aceh yang beradab, beradat dan bermartabat dalam nuansa Islami serta tumbuhnya partisipasi dalam proses pembangunan."
+                </p>
+              </div>
 
-                <div className="glass-card-3d" style={{ background: 'rgba(255, 255, 255, 0.02)' }}>
-                  <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--warning)' }}>Alat / Tools Pendukung</h4>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.5rem' }}>
-                    {['React.js', 'Node.js', 'PostgreSQL', 'Leaflet', 'Figma', 'Lighthouse', 'Vercel'].map(t => (
-                      <span key={t} className="tech-tag">{t}</span>
-                    ))}
-                  </div>
+              {/* Tools Card */}
+              <div className="premium-glass-card card-reveal-3 card-accent-purple">
+                <h4 className="card-inner-subtitle accent-purple">Alat / Tools Pendukung</h4>
+                <div className="tech-tags-container">
+                  {['React.js', 'Node.js', 'PostgreSQL', 'Leaflet', 'Figma', 'Lighthouse', 'Vercel'].map(t => (
+                    <span key={t} className="tech-tag-premium">{t}</span>
+                  ))}
                 </div>
               </div>
             </div>

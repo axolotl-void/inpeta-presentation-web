@@ -85,13 +85,13 @@ strong { color: var(--text-main); }
 .earth-container-3d {
   position: fixed;
   top: -20vh;
-  left: 0;
-  width: 100vw;
+  left: -40vw;
+  width: 180vw;
   height: 140vh;
   z-index: 2;
   pointer-events: none;
   background: transparent;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .earth-atmosphere-glow {
@@ -1030,3 +1030,349 @@ strong { color: var(--text-main); }
   dominant-baseline: middle;
 }
 
+
+/* ==========================================
+   SECTION 2: PROFIL INSTANSI REDESIGN (SPLIT LAYOUT)
+   ========================================== */
+.instansi-section {
+  position: relative;
+  z-index: 3;
+}
+
+.instansi-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.split-layout-left {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+/* Header Styles */
+.section-header-modern {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.section-tag-modern {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.35);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.section-title-modern {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  background: linear-gradient(135deg, var(--text-main) 30%, var(--text-muted) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0;
+}
+
+/* Premium Glass Card */
+.premium-glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.55) 0%, rgba(10, 15, 30, 0.35) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s ease, 
+              box-shadow 0.6s ease;
+  padding-left: 1.8rem;
+}
+
+/* Left Accent Line */
+.premium-glass-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(to bottom, #60a5fa, #3b82f6);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+}
+
+/* Accent Colors */
+.premium-glass-card.card-accent-green::before {
+  background: linear-gradient(to bottom, #34d399, #10b981);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+}
+
+.premium-glass-card.card-accent-purple::before {
+  background: linear-gradient(to bottom, #a78bfa, #8b5cf6);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+/* Hover effects with colored glow */
+.premium-glass-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(59, 130, 246, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.premium-glass-card.card-accent-green:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(16, 185, 129, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.premium-glass-card.card-accent-purple:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(139, 92, 246, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Typography inside cards */
+.card-inner-title {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.12rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.card-description {
+  margin-bottom: 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.card-inner-subtitle {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+.card-inner-subtitle.accent-green { color: var(--accent); }
+.card-inner-subtitle.accent-purple { color: #a78bfa; }
+
+.card-vision-text {
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.tech-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Tech Tag Premium */
+.tech-tag-premium {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-tag-premium:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* Minimalist Glowing Timeline */
+.modern-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: relative;
+  padding-left: 1.4rem;
+  margin-top: 1.4rem;
+}
+
+.modern-timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.timeline-node {
+  position: relative;
+}
+
+.timeline-node .node-dot {
+  position: absolute;
+  left: -22px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary), 0 0 4px var(--primary);
+  border: 2px solid #0d121f;
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.timeline-node:nth-child(2) .node-dot {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent), 0 0 4px var(--accent);
+  animation: pulseGlowGreen 3s infinite ease-in-out;
+  animation-delay: 1.5s;
+}
+
+.timeline-node .node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timeline-node .node-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.timeline-node:nth-child(2) .node-date {
+  color: var(--accent);
+}
+
+.timeline-node .node-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+.timeline-node .node-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+  70% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+@keyframes pulseGlowGreen {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Staggered 3D Entrance Animations with Blur */
+.instansi-section .card-reveal-1,
+.instansi-section .card-reveal-2,
+.instansi-section .card-reveal-3 {
+  opacity: 0;
+  transform: translateX(-50px) rotateY(15deg) scale(0.95);
+  filter: blur(8px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+
+.instansi-section.active .card-reveal-1 {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 0.4s;
+}
+
+.instansi-section.active .card-reveal-2 {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 0.7s;
+}
+
+.instansi-section.active .card-reveal-3 {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 1.0s;
+}
+
+/* Custom styling for WebGL Earth Popups to make them Glassmorphic Dark Theme */
+.we-pp-wrapper {
+  background: rgba(10, 14, 23, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+}
+
+.we-pp-tip {
+  background: rgba(10, 14, 23, 0.85) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Responsive Styles for split layout */
+@media (max-width: 768px) {
+  .instansi-inner {
+    justify-content: center;
+    padding-top: 6rem;
+  }
+  
+  .split-layout-left {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
