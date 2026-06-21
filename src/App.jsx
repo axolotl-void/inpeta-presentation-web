@@ -29,13 +29,12 @@ export default function App() {
     document.body.className = 'dark-theme';
   }, []);
 
-  const showGlobe = scrollProgress < 0.35 || scrollProgress >= 0.85;
   const showLaptop = scrollProgress >= 0.35 && scrollProgress < 0.85;
 
   return (
     <>
       {/* === WebGL EARTH 3D LAYER (fixed behind everything) === */}
-      {showGlobe && <WebGLGlobe scrollProgress={scrollProgress} />}
+      <WebGLGlobe scrollProgress={scrollProgress} />
 
       {/* === 3D CANVAS LAYER (fixed behind everything) === */}
       {showLaptop && <Scene3D scrollProgress={scrollProgress} />}
