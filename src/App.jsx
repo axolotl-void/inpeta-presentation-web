@@ -17,6 +17,10 @@ import photoYogi from './assets/yogi-prasetya.jpeg';
 import photoMukhroji from './assets/mukhroji.jpg';
 import photoBobby from './assets/Bobby-Novrizan.png';
 
+// inPETA screenshots
+import imgLamaLanding from './assets/inpeta-foto/landing page inpeta LAMA_11zon.png';
+import imgBaruLanding from './assets/inpeta-foto/landing page inpeta baru_11zon.png';
+
 export default function App() {
   const totalSections = 9;
   const { scrollProgress, currentSection } = useScrollProgress(totalSections);
@@ -232,50 +236,96 @@ export default function App() {
         </section>
 
         {/* ── SECTION 3: LATAR BELAKANG & MASALAH ── */}
-        <section className="scroll-section" id="section-3">
+        <section className={`scroll-section masalah-section ${currentSection === 3 ? 'active' : ''}`} id="section-3">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 03 — Mengapa re-engineering inPETA Aceh diperlukan?</span>
-              <h2 className="section-title">Latar Belakang &amp; Identifikasi Masalah</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 03 — Mengapa re-engineering inPETA Aceh diperlukan?</span>
+              <h2 className="section-title-modern">Latar Belakang &amp; Identifikasi Masalah</h2>
             </div>
 
-            <p style={{ fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+            <p className="section-intro-text">
               Platform <strong>inPETA Aceh</strong> adalah portal pemetaan interaktif yang menyajikan data sektoral peternakan di Provinsi Aceh. Selama magang, teridentifikasi sejumlah hambatan performa dan kegunaan pada sistem lama:
             </p>
 
             <div className="before-after-container">
-              <div className="ba-card before glass-card-3d">
-                <h4 style={{ color: 'var(--danger)', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <div className="ba-card before premium-glass-card card-reveal-left">
+                <h4 style={{ color: 'var(--danger)', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', fontSize: '1.05rem', fontWeight: 600, fontFamily: 'var(--font-heading)' }}>
                   <AlertCircle size={18} /> Sistem Lama (Legacy MPA)
                 </h4>
-                <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.85rem' }}>
-                  <li>
-                    <strong>Multi-Page Architecture (MPA):</strong> Interaksi memicu pemuatan ulang halaman penuh (<em>full page reload</em>), meningkatkan latensi dan transfer bandwidth.
-                  </li>
-                  <li>
-                    <strong>Tampilan Kaku &amp; Tidak Responsif:</strong> Menu padat dan peta terpotong saat diakses via browser HP/tablet.
-                  </li>
-                  <li>
-                    <strong>Data Statis:</strong> Tidak ada dashboard admin yang mudah diakses untuk meremajakan (CRUD) data dan info peta secara dinamis.
-                  </li>
-                </ul>
+                
+                {/* Browser Mockup */}
+                <div className="browser-mockup">
+                  <div className="browser-header">
+                    <div className="browser-dot red"></div>
+                    <div className="browser-dot yellow"></div>
+                    <div className="browser-dot green"></div>
+                    <div className="browser-address">http://inpeta.acehprov.go.id/legacy</div>
+                  </div>
+                  <div className="browser-body">
+                    <img src={imgLamaLanding} alt="inPETA Legacy Version" className="browser-image" />
+                  </div>
+                </div>
+
+                <div className="custom-icon-list">
+                  <div className="custom-list-item">
+                    <AlertCircle size={16} className="list-icon text-danger" />
+                    <div>
+                      <strong>Multi-Page Architecture (MPA):</strong> Interaksi memicu pemuatan ulang halaman penuh (<em>full page reload</em>), meningkatkan latensi dan transfer bandwidth.
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <AlertCircle size={16} className="list-icon text-danger" />
+                    <div>
+                      <strong>Tampilan Kaku &amp; Tidak Responsif:</strong> Menu padat dan peta terpotong saat diakses via browser HP/tablet.
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <AlertCircle size={16} className="list-icon text-danger" />
+                    <div>
+                      <strong>Data Statis:</strong> Tidak ada dashboard admin yang mudah diakses untuk meremajakan (CRUD) data dan info peta secara dinamis.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="ba-card after glass-card-3d">
-                <h4 style={{ color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <div className="ba-card after premium-glass-card card-reveal-right card-accent-green">
+                <h4 style={{ color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', fontSize: '1.05rem', fontWeight: 600, fontFamily: 'var(--font-heading)' }}>
                   <CheckCircle size={18} /> Sistem Baru (React SPA)
                 </h4>
-                <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.85rem' }}>
-                  <li>
-                    <strong>Single Page Application (SPA):</strong> Client-side rendering menghasilkan transisi antar-menu yang instan dan mulus tanpa reload.
-                  </li>
-                  <li>
-                    <strong>Responsive Mobile-First:</strong> Menggunakan card-based layout dan tata letak menu modern yang dioptimalkan penuh untuk interaksi sentuh HP.
-                  </li>
-                  <li>
-                    <strong>Dashboard Management System:</strong> Backend Node.js &amp; PostgreSQL terintegrasi untuk CRUD berita, fasilitas, logo, dan peta secara real-time.
-                  </li>
-                </ul>
+
+                {/* Browser Mockup */}
+                <div className="browser-mockup">
+                  <div className="browser-header">
+                    <div className="browser-dot red"></div>
+                    <div className="browser-dot yellow"></div>
+                    <div className="browser-dot green"></div>
+                    <div className="browser-address">http://inpeta.acehprov.go.id/spa</div>
+                  </div>
+                  <div className="browser-body">
+                    <img src={imgBaruLanding} alt="inPETA Revamped React SPA" className="browser-image" />
+                  </div>
+                </div>
+
+                <div className="custom-icon-list">
+                  <div className="custom-list-item">
+                    <CheckCircle size={16} className="list-icon text-success" />
+                    <div>
+                      <strong>Single Page Application (SPA):</strong> Client-side rendering menghasilkan transisi antar-menu yang instan dan mulus tanpa reload.
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <CheckCircle size={16} className="list-icon text-success" />
+                    <div>
+                      <strong>Responsive Mobile-First:</strong> Menggunakan card-based layout dan tata letak menu modern yang dioptimalkan penuh untuk interaksi sentuh HP.
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <CheckCircle size={16} className="list-icon text-success" />
+                    <div>
+                      <strong>Dashboard Management System:</strong> Backend Node.js &amp; PostgreSQL terintegrasi untuk CRUD berita, fasilitas, logo, dan peta secara real-time.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
