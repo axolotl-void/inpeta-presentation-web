@@ -1535,3 +1535,102 @@ strong { color: var(--text-main); }
   filter: blur(0px);
   transition-delay: 0.6s;
 }
+
+/* ==========================================
+   SECTION 4: TUJUAN & MANFAAT OVERHAUL
+   ========================================== */
+.tujuan-section {
+  position: relative;
+  z-index: 3;
+}
+
+/* Premium Stakeholder Benefit Sub-Cards */
+.premium-benefit-item {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 0.85rem 1rem 0.9rem 1.25rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-benefit-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  transition: all 0.4s ease;
+}
+
+/* Left Accent border rules */
+.premium-benefit-item.benefit-accent-blue::before {
+  background: linear-gradient(to bottom, #60a5fa, #3b82f6);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.premium-benefit-item.benefit-accent-green::before {
+  background: linear-gradient(to bottom, #34d399, #10b981);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.premium-benefit-item.benefit-accent-purple::before {
+  background: linear-gradient(to bottom, #a78bfa, #8b5cf6);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+/* Hover glow for sub-cards */
+.premium-benefit-item:hover {
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-2px) scale(1.005);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.premium-benefit-item.benefit-accent-blue:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(59, 130, 246, 0.06);
+}
+
+.premium-benefit-item.benefit-accent-green:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(16, 185, 129, 0.06);
+}
+
+.premium-benefit-item.benefit-accent-purple:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(139, 92, 246, 0.06);
+}
+
+/* Staggered 3D Animations for Section 4 */
+.tujuan-section .card-reveal-left,
+.tujuan-section .card-reveal-right {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tujuan-section .card-reveal-left {
+  transform: translateX(-60px) rotateY(15deg) scale(0.96);
+  transform-origin: right center;
+}
+
+.tujuan-section .card-reveal-right {
+  transform: translateX(60px) rotateY(-15deg) scale(0.96);
+  transform-origin: left center;
+}
+
+/* Active Entrance Trigger for Section 4 */
+.tujuan-section.active .card-reveal-left {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 0.3s;
+}
+
+.tujuan-section.active .card-reveal-right {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 0.6s;
+}

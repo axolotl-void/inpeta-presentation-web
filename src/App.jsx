@@ -331,47 +331,84 @@ export default function App() {
         </section>
 
         {/* ── SECTION 4: TUJUAN & MANFAAT ── */}
-        <section className="scroll-section" id="section-4">
+        <section className={`scroll-section tujuan-section ${currentSection === 4 ? 'active' : ''}`} id="section-4">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 04 — Target pencapaian dan nilai kontribusi proyek</span>
-              <h2 className="section-title">Tujuan &amp; Manfaat Kegiatan Magang</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 04 — Target pencapaian dan nilai kontribusi proyek</span>
+              <h2 className="section-title-modern">Tujuan &amp; Manfaat Kegiatan Magang</h2>
             </div>
 
             <div className="content-grid two-col">
-              <div className="glass-card-3d">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {/* Tujuan Card */}
+              <div className="premium-glass-card card-reveal-left">
+                <h3 className="card-inner-title">
                   <Target size={18} /> Tujuan Rekayasa Ulang
                 </h3>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', paddingLeft: '1.2rem', fontSize: '0.9rem' }}>
-                  <li>
-                    <strong>Analisis &amp; Evaluasi:</strong> Mengukur kelemahan kegunaan (<em>usability</em>) dan responsivitas web inPETA eksisting menggunakan prinsip <em>Usability Heuristics</em>.
-                  </li>
-                  <li>
-                    <strong>Redesain Antarmuka:</strong> Membuat rancangan UI/UX bertema modern, clean, dan mobile-first (Figma/Canva).
-                  </li>
-                  <li>
-                    <strong>Implementasi SPA:</strong> Mengembangkan arsitektur web modern menggunakan pustaka utama React.js.
-                  </li>
-                  <li>
-                    <strong>Pengujian Lintas Perangkat:</strong> Memastikan fungsionalitas peta dan kontrol admin berjalan 100% lancar di desktop, tablet, dan smartphone.
-                  </li>
-                </ul>
+                <div className="custom-icon-list" style={{ gap: '1.2rem' }}>
+                  <div className="custom-list-item">
+                    <Target size={16} className="list-icon text-blue" style={{ color: 'var(--primary)', filter: 'drop-shadow(0 0 4px var(--primary-glow))' }} />
+                    <div>
+                      <strong>Analisis &amp; Evaluasi:</strong> Mengukur kelemahan kegunaan (<em>usability</em>) dan responsivitas web inPETA eksisting menggunakan prinsip <em>Usability Heuristics</em>.
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <Target size={16} className="list-icon text-blue" style={{ color: 'var(--primary)', filter: 'drop-shadow(0 0 4px var(--primary-glow))' }} />
+                    <div>
+                      <strong>Redesain Antarmuka:</strong> Membuat rancangan UI/UX bertema modern, clean, dan mobile-first (Figma/Canva).
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <Target size={16} className="list-icon text-blue" style={{ color: 'var(--primary)', filter: 'drop-shadow(0 0 4px var(--primary-glow))' }} />
+                    <div>
+                      <strong>Implementasi SPA:</strong> Mengembangkan arsitektur web modern menggunakan pustaka utama React.js.
+                    </div>
+                  </div>
+                  <div className="custom-list-item">
+                    <Target size={16} className="list-icon text-blue" style={{ color: 'var(--primary)', filter: 'drop-shadow(0 0 4px var(--primary-glow))' }} />
+                    <div>
+                      <strong>Pengujian Lintas Perangkat:</strong> Memastikan fungsionalitas peta dan kontrol admin berjalan 100% lancar di desktop, tablet, dan smartphone.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="glass-card-3d">
-                <h3 style={{ color: 'var(--accent)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {/* Manfaat Card */}
+              <div className="premium-glass-card card-reveal-right card-accent-green">
+                <h3 className="card-inner-title" style={{ color: 'var(--accent)' }}>
                   <Award size={18} /> Manfaat Bagi Stakeholder
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.8rem' }}>
-                  <div className="benefit-item" style={{ borderLeftColor: 'var(--primary)' }}>
-                    <strong>Instansi (DISKOMINSA):</strong> Memperoleh portal GIS modern yang mudah diperbarui dan siap digunakan untuk menyajikan data statistik daerah.
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginTop: '1rem' }}>
+                  {/* Benefit Instansi */}
+                  <div className="premium-benefit-item benefit-accent-blue">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.25rem' }}>
+                      <Users size={16} style={{ color: 'var(--primary)', filter: 'drop-shadow(0 0 4px var(--primary-glow))' }} />
+                      <strong style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>Instansi (DISKOMINSA)</strong>
+                    </div>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+                      Memperoleh portal GIS modern yang mudah diperbarui dan siap digunakan untuk menyajikan data statistik daerah secara dinamis.
+                    </p>
                   </div>
-                  <div className="benefit-item" style={{ borderLeftColor: 'var(--accent)' }}>
-                    <strong>Pengguna Publik:</strong> Kemudahan akses sebaran ternak daerah melalui perangkat mobile dengan peta interaktif yang responsif.
+
+                  {/* Benefit Publik */}
+                  <div className="premium-benefit-item benefit-accent-green">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.25rem' }}>
+                      <Activity size={16} style={{ color: 'var(--accent)', filter: 'drop-shadow(0 0 4px var(--accent-glow))' }} />
+                      <strong style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>Pengguna Publik</strong>
+                    </div>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+                      Kemudahan akses sebaran ternak daerah melalui perangkat mobile dengan peta interaktif yang responsif.
+                    </p>
                   </div>
-                  <div className="benefit-item" style={{ borderLeftColor: 'var(--warning)' }}>
-                    <strong>Akademik (Kampus UBBG):</strong> Referensi tambahan studi kasus rekayasa sistem nyata menggunakan teknologi React di instansi pemerintah daerah.
+
+                  {/* Benefit Akademik */}
+                  <div className="premium-benefit-item benefit-accent-purple">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.25rem' }}>
+                      <GraduationCap size={16} style={{ color: '#a78bfa', filter: 'drop-shadow(0 0 4px rgba(167, 139, 250, 0.4))' }} />
+                      <strong style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>Akademik (Kampus UBBG)</strong>
+                    </div>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+                      Referensi tambahan studi kasus rekayasa sistem nyata menggunakan teknologi React di instansi pemerintah daerah.
+                    </p>
                   </div>
                 </div>
               </div>
