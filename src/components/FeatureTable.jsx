@@ -45,42 +45,24 @@ export default function FeatureTable() {
   const percentage = Math.round((successCount / totalCount) * 100);
 
   return (
-    <div style={{ width: '100%' }}>
+    <div className="feature-table-wrapper">
       {/* Metrics Banner */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: 'rgba(59, 130, 246, 0.05)',
-        border: '1px solid rgba(59, 130, 246, 0.15)',
-        borderRadius: '12px',
-        padding: '1rem 1.5rem',
-        marginBottom: '1.5rem',
-        flexWrap: 'wrap',
-        gap: '1rem'
-      }}>
-        <div>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>PERSENTASE KESIAPAN SISTEM:</span>
-          <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', fontFamily: 'var(--font-heading)' }}>
-            {percentage}% <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>({successCount} dari {totalCount} Fitur Selesai)</span>
+      <div className="feature-metrics-banner">
+        <div className="metrics-text-group">
+          <span className="metrics-label">PERSENTASE KESIAPAN SISTEM:</span>
+          <h3 className="metrics-title">
+            {percentage}% <span className="metrics-detail">({successCount} dari {totalCount} Fitur Selesai)</span>
           </h3>
         </div>
         
         {/* Progress bar */}
-        <div style={{ width: '150px', height: '10px', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '9999px', overflow: 'hidden' }}>
-          <div style={{ width: `${percentage}%`, height: '100%', background: 'var(--primary)', borderRadius: '9999px' }}></div>
+        <div className="feature-progress-container">
+          <div className="feature-progress-fill" style={{ width: `${percentage}%` }}></div>
         </div>
       </div>
 
       {/* Controls Container */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        smDirection: 'row',
-        justifyContent: 'space-between',
-        gap: '1rem',
-        marginBottom: '1rem'
-      }}>
+      <div className="feature-controls">
         {/* Search */}
         <input
           type="text"
@@ -88,26 +70,15 @@ export default function FeatureTable() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
-          style={{ flex: 1 }}
         />
 
         {/* Filter Buttons */}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="feature-filter-buttons">
           {['Semua', 'Selesai', 'Belum'].map(filter => (
             <button
               key={filter}
               onClick={() => setStatusFilter(filter)}
-              style={{
-                background: statusFilter === filter ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
-                color: statusFilter === filter ? 'white' : 'var(--text-muted)',
-                border: '1px solid var(--border-color)',
-                padding: '0.4rem 0.9rem',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                transition: 'var(--transition-fast)'
-              }}
+              className={`feature-filter-btn ${statusFilter === filter ? 'active' : ''}`}
             >
               {filter}
             </button>
@@ -120,42 +91,28 @@ export default function FeatureTable() {
         <table className="custom-table">
           <thead>
             <tr>
-              <th style={{ width: '5%' }}>No</th>
-              <th style={{ width: '30%' }}>Nama Fitur</th>
-              <th style={{ width: '30%' }}>Implementasi Back-End</th>
-              <th style={{ width: '25%' }}>Implementasi Front-End</th>
-              <th style={{ width: '10%', textAlign: 'center' }}>Hasil</th>
+              <th className="col-no">No</th>
+              <th className="col-name">Nama Fitur</th>
+              <th className="col-backend">Implementasi Back-End</th>
+              <th className="col-frontend">Implementasi Front-End</th>
+              <th className="col-status">Hasil</th>
             </tr>
           </thead>
           <tbody>
             {filteredFeatures.length > 0 ? (
               filteredFeatures.map((feat, index) => (
                 <tr key={feat.id}>
-                  <td>{index + 1}</td>
-                  <td style={{ fontWeight: 600, color: 'var(--text-main)' }}>{feat.name}</td>
-                  <td style={{ fontSize: '0.85rem' }}>{feat.backend}</td>
-                  <td style={{ fontSize: '0.85rem' }}>{feat.frontend}</td>
-                  <td style={{ textAlign: 'center' }}>
+                  <td className="col-no-val">{index + 1}</td>
+                  <td className="col-name-val">{feat.name}</td>
+                  <td className="col-backend-val">{feat.backend}</td>
+                  <td className="col-frontend-val">{feat.frontend}</td>
+                  <td className="col-status-val">
                     {feat.status ? (
-                      <span style={{
-                        background: 'rgba(16, 185, 129, 0.12)',
-                        color: 'var(--accent)',
-                        padding: '0.2rem 0.5rem',
-                        borderRadius: '6px',
-                        fontSize: '0.75rem',
-                        fontWeight: 700
-                      }}>
+                      <span className="status-badge status-success">
                         ✔️ Sukses
                       </span>
                     ) : (
-                      <span style={{
-                        background: 'rgba(239, 68, 68, 0.12)',
-                        color: 'var(--danger)',
-                        padding: '0.2rem 0.5rem',
-                        borderRadius: '6px',
-                        fontSize: '0.75rem',
-                        fontWeight: 700
-                      }}>
+                      <span className="status-badge status-pending">
                         ❌ Belum
                       </span>
                     )}
@@ -164,7 +121,7 @@ export default function FeatureTable() {
               ))
             ) : (
               <tr>
-                <td colSpan="5" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-dark)' }}>
+                <td colSpan="5" className="table-empty-row">
                   Fitur tidak ditemukan.
                 </td>
               </tr>

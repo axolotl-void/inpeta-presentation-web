@@ -81,33 +81,24 @@ export default function InteractiveMap() {
     <div className="map-demo-container">
       {/* Control Panel (Sidebar) */}
       <div className="map-sidebar">
-        <div>
-          <h3 style={{fontFamily: 'var(--font-heading)', fontSize: '1.2rem', marginBottom: '0.5rem'}}>
+        <div className="map-sidebar-header">
+          <h3 className="map-sidebar-title">
             Demo Peta inPETA Aceh
           </h3>
-          <p style={{fontSize: '0.875rem'}}>
+          <p className="map-sidebar-desc">
             Visualisasi sebaran fasilitas peternakan hasil re-engineering menggunakan React.js dan Leaflet.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col gap-2">
-          <label style={{fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)'}}>FILTER TIPE:</label>
-          <div className="flex flex-wrap gap-2">
+        <div className="map-filter-group">
+          <label className="map-filter-label">FILTER TIPE:</label>
+          <div className="map-filter-buttons">
             {['Semua', 'Balai Ternak', 'Puskeswan & Klinik', 'Pasar Ternak'].map((t) => (
               <button
                 key={t}
                 onClick={() => setFilterType(t)}
-                className={`glow-btn ${filterType === t ? '' : 'glow-btn-accent'}`}
-                style={{
-                  padding: '0.35rem 0.8rem',
-                  fontSize: '0.75rem',
-                  borderRadius: '6px',
-                  background: filterType === t ? 'var(--primary)' : 'rgba(255,255,255,0.05)',
-                  border: filterType === t ? 'none' : '1px solid var(--border-color)',
-                  color: 'var(--text-main)',
-                  boxShadow: 'none'
-                }}
+                className={`map-filter-btn ${filterType === t ? 'active' : ''}`}
               >
                 {t}
               </button>
@@ -116,43 +107,20 @@ export default function InteractiveMap() {
         </div>
 
         {/* Details Card */}
-        <div style={{
-          background: 'rgba(255,255,255,0.02)',
-          border: '1px solid var(--border-color)',
-          borderRadius: '8px',
-          padding: '1rem',
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center'
-        }}>
+        <div className={`map-details-card ${selectedFac ? `type-${selectedFac.type === 'Pasar Ternak' ? 'pasar' : selectedFac.type === 'RPH & Klinik' ? 'rph' : selectedFac.type === 'Puskeswan & Klinik' ? 'rph' : 'balai'}` : 'empty'}`}>
           {selectedFac ? (
-            <div>
-              <span style={{
-                background: selectedFac.type === 'Pasar Ternak' ? 'rgba(245, 158, 11, 0.15)' : selectedFac.type === 'RPH & Klinik' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(59, 130, 246, 0.15)',
-                color: selectedFac.type === 'Pasar Ternak' ? 'var(--warning)' : selectedFac.type === 'RPH & Klinik' ? 'var(--accent)' : 'var(--primary)',
-                padding: '0.2rem 0.5rem',
-                borderRadius: '4px',
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                textTransform: 'uppercase'
-              }}>
+            <div className="map-details-content">
+              <span className={`map-badge badge-${selectedFac.type === 'Pasar Ternak' ? 'pasar' : selectedFac.type === 'RPH & Klinik' ? 'rph' : selectedFac.type === 'Puskeswan & Klinik' ? 'rph' : 'balai'}`}>
                 {selectedFac.type}
               </span>
-              <h4 style={{marginTop: '0.5rem', marginBottom: '0.25rem', fontSize: '1rem'}}>{selectedFac.name}</h4>
-              <p style={{fontSize: '0.8rem', marginBottom: '0.5rem', color: 'var(--text-muted)'}}>{selectedFac.desc}</p>
-              <div style={{
-                background: 'rgba(0,0,0,0.2)',
-                padding: '0.5rem',
-                borderRadius: '6px',
-                fontSize: '0.75rem',
-                borderLeft: '2px solid var(--primary)'
-              }}>
+              <h4 className="map-details-title">{selectedFac.name}</h4>
+              <p className="map-details-desc">{selectedFac.desc}</p>
+              <div className="map-details-tech">
                 <strong>Detail Teknis:</strong> {selectedFac.details}
               </div>
             </div>
           ) : (
-            <p style={{textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-dark)', fontStyle: 'italic'}}>
+            <p className="map-details-empty">
               Klik pin penanda di peta untuk melihat detail fasilitas secara langsung.
             </p>
           )}

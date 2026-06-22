@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { 
   MapPin, Calendar, AlertCircle, Target, Award, Cpu, 
   CheckCircle, Activity, BookOpen, User, Users, GraduationCap,
-  Sparkles, Layers, ListChecks, HelpCircle, ChevronDown
+  Sparkles, Layers, ListChecks, HelpCircle, ChevronDown, Eye, Wrench,
+  RotateCw, ArrowLeft, ArrowRight, Lock
 } from 'lucide-react';
-import InteractiveMap from './components/InteractiveMap';
 import PerformanceGauges from './components/PerformanceGauges';
 import FeatureTable from './components/FeatureTable';
 import WebGLGlobe from './components/WebGLGlobe';
@@ -19,14 +19,65 @@ import photoBobby from './assets/Bobby-Novrizan.png';
 // inPETA screenshots
 import imgLamaLanding from './assets/inpeta-foto/landing page inpeta LAMA_11zon.png';
 import imgBaruLanding from './assets/inpeta-foto/landing page inpeta baru_11zon.png';
+import imgPetaBaru from './assets/inpeta-foto/PETA INPETA BARU_11zon.png';
 
 export default function App() {
   const totalSections = 9;
   const { scrollProgress, currentSection } = useScrollProgress(totalSections);
 
+  // Force scroll to top on every page load / refresh
+  // This prevents WebGL globe & background from rendering in a broken mid-page state
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     document.body.className = 'dark-theme';
   }, []);
+
+  // Keyboard navigation for presentation mode
+  useEffect(() => {
+    const scrollToSection = (num) => {
+      const target = document.getElementById(`section-${num}`);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const handleKeyDown = (e) => {
+      // Ignore when typing in input fields
+      const tag = e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+      // Number keys 1-9 → jump to that section
+      if (e.key >= '1' && e.key <= '9') {
+        e.preventDefault();
+        scrollToSection(Number(e.key));
+        return;
+      }
+
+      // Enter / ArrowRight / ArrowDown → next section
+      if (e.key === 'Enter' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = Math.min(currentSection + 1, totalSections);
+        scrollToSection(next);
+        return;
+      }
+
+      // Backspace / Delete / ArrowLeft / ArrowUp → previous section
+      if (e.key === 'Backspace' || e.key === 'Delete' || e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = Math.max(currentSection - 1, 1);
+        scrollToSection(prev);
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSection, totalSections]);
+
 
   return (
     <>
@@ -61,6 +112,23 @@ export default function App() {
                 3D EXPERIENCE
               </span>
             </div>
+          </div>
+
+          {/* Page indicator boxes */}
+          <div className="nav-page-indicators">
+            {Array.from({ length: totalSections }, (_, i) => i + 1).map((num) => (
+              <button
+                key={num}
+                className={`nav-page-box ${currentSection === num ? 'active' : ''}`}
+                onClick={() => {
+                  const target = document.getElementById(`section-${num}`);
+                  if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }}
+                aria-label={`Go to section ${num}`}
+              >
+                {num}
+              </button>
+            ))}
           </div>
 
           <div style={{
@@ -209,7 +277,9 @@ export default function App() {
 
               {/* Visi Card */}
               <div className="premium-glass-card card-reveal-2 card-accent-green">
-                <h4 className="card-inner-subtitle accent-green">Visi Utama Instansi</h4>
+                <h4 className="card-inner-subtitle accent-green" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Eye size={18} /> Visi Utama Instansi
+                </h4>
                 <p className="card-vision-text">
                   "Terwujudnya masyarakat yang mampu memilih dan memilah konsumsi informasi untuk membangun masyarakat Aceh yang beradab, beradat dan bermartabat dalam nuansa Islami serta tumbuhnya partisipasi dalam proses pembangunan."
                 </p>
@@ -217,7 +287,9 @@ export default function App() {
 
               {/* Tools Card */}
               <div className="premium-glass-card card-reveal-3 card-accent-purple">
-                <h4 className="card-inner-subtitle accent-purple">Alat / Tools Pendukung</h4>
+                <h4 className="card-inner-subtitle accent-purple" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Wrench size={18} /> Alat / Tools Pendukung
+                </h4>
                 <div className="tech-tags-container">
                   {['React.js', 'Node.js', 'PostgreSQL', 'Leaflet', 'Figma', 'Lighthouse', 'Vercel'].map(t => (
                     <span key={t} className="tech-tag-premium">{t}</span>
@@ -249,10 +321,21 @@ export default function App() {
                 {/* Browser Mockup */}
                 <div className="browser-mockup">
                   <div className="browser-header">
-                    <div className="browser-dot red"></div>
-                    <div className="browser-dot yellow"></div>
-                    <div className="browser-dot green"></div>
-                    <div className="browser-address">http://inpeta.acehprov.go.id/legacy</div>
+                    <div className="browser-actions">
+                      <div className="browser-dot red"></div>
+                      <div className="browser-dot yellow"></div>
+                      <div className="browser-dot green"></div>
+                    </div>
+                    <div className="browser-nav-icons">
+                      <ArrowLeft size={11} className="browser-icon" />
+                      <ArrowRight size={11} className="browser-icon" />
+                      <RotateCw size={10} className="browser-icon" />
+                    </div>
+                    <div className="browser-address">
+                      <Lock size={9} style={{ marginRight: '4px', opacity: 0.5 }} />
+                      <span>inpeta.acehprov.go.id/legacy</span>
+                    </div>
+                    <span className="browser-badge badge-legacy">LEGACY SYSTEM</span>
                   </div>
                   <div className="browser-body">
                     <img src={imgLamaLanding} alt="inPETA Legacy Version" className="browser-image" />
@@ -289,10 +372,21 @@ export default function App() {
                 {/* Browser Mockup */}
                 <div className="browser-mockup">
                   <div className="browser-header">
-                    <div className="browser-dot red"></div>
-                    <div className="browser-dot yellow"></div>
-                    <div className="browser-dot green"></div>
-                    <div className="browser-address">http://inpeta.acehprov.go.id/spa</div>
+                    <div className="browser-actions">
+                      <div className="browser-dot red"></div>
+                      <div className="browser-dot yellow"></div>
+                      <div className="browser-dot green"></div>
+                    </div>
+                    <div className="browser-nav-icons">
+                      <ArrowLeft size={11} className="browser-icon" />
+                      <ArrowRight size={11} className="browser-icon" />
+                      <RotateCw size={10} className="browser-icon" />
+                    </div>
+                    <div className="browser-address">
+                      <Lock size={9} style={{ marginRight: '4px', color: 'var(--accent)' }} />
+                      <span>inpeta.acehprov.go.id/spa</span>
+                    </div>
+                    <span className="browser-badge badge-spa">REACT SPA</span>
                   </div>
                   <div className="browser-body">
                     <img src={imgBaruLanding} alt="inPETA Revamped React SPA" className="browser-image" />
@@ -487,7 +581,7 @@ export default function App() {
                     </div>
 
                     {/* Connection 1 */}
-                    <div className="arch-connection">
+                    <div className="arch-connection connection-1">
                       <div className="connection-line">
                         <span className="connection-pulse"></span>
                       </div>
@@ -506,7 +600,7 @@ export default function App() {
                     </div>
 
                     {/* Connection 2 */}
-                    <div className="arch-connection">
+                    <div className="arch-connection connection-2">
                       <div className="connection-line">
                         <span className="connection-pulse"></span>
                       </div>
@@ -538,94 +632,174 @@ export default function App() {
         </section>
 
         {/* ── SECTION 6: LIVE WEB GIS DEMO ── */}
-        <section className="scroll-section section-wide" id="section-6">
+        <section className={`scroll-section section-wide map-section ${currentSection === 6 ? 'active' : ''}`} id="section-6">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 06 — Interaksi pemetaan langsung terintegrasi di presentasi</span>
-              <h2 className="section-title">Demonstrasi Live Web GIS inPETA</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 06 — Interaksi Pemetaan Langsung</span>
+              <h2 className="section-title-modern">Demonstrasi Web GIS inPETA</h2>
             </div>
 
-            <div className="glass-card-3d map-container-3d">
-              <InteractiveMap />
+            <div className="content-grid two-col">
+              {/* Left: Description & Feature Highlights */}
+              <div className="card-reveal-left map-info-column">
+                <div className="premium-glass-card map-desc-card">
+                  <div className="map-desc-header">
+                    <MapPin size={18} className="text-blue" />
+                    <span>Peta Interaktif inPETA Aceh</span>
+                  </div>
+                  <p className="map-desc-text">
+                    Antarmuka peta berbasis <strong>React-Leaflet</strong> yang menampilkan sebaran fasilitas peternakan di seluruh Provinsi Aceh secara interaktif dan real-time.
+                  </p>
+
+                  <div className="map-feature-list">
+                    <div className="map-feature-item">
+                      <span className="map-feature-dot dot-emerald"></span>
+                      <span>Layer batas <strong>Kabupaten</strong> & <strong>Kecamatan</strong></span>
+                    </div>
+                    <div className="map-feature-item">
+                      <span className="map-feature-dot dot-amber"></span>
+                      <span>Marker lokasi <strong>Pasar Ternak</strong>, <strong>RPH</strong>, & <strong>Klinik Hewan</strong></span>
+                    </div>
+                    <div className="map-feature-item">
+                      <span className="map-feature-dot dot-blue"></span>
+                      <span>Sidebar <strong>Menu Fitur</strong> dengan toggle layer dinamis</span>
+                    </div>
+                    <div className="map-feature-item">
+                      <span className="map-feature-dot dot-rose"></span>
+                      <span>Panel <strong>Wawasan Data</strong> populasi ternak per wilayah</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="premium-glass-card map-stats-card">
+                  <div className="map-stats-grid">
+                    <div className="map-stat-item">
+                      <span className="map-stat-value text-emerald">23</span>
+                      <span className="map-stat-label">Kabupaten</span>
+                    </div>
+                    <div className="map-stat-item">
+                      <span className="map-stat-value text-amber">5</span>
+                      <span className="map-stat-label">Layer Fitur</span>
+                    </div>
+                    <div className="map-stat-item">
+                      <span className="map-stat-value text-blue">3</span>
+                      <span className="map-stat-label">Jenis Ternak</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Map Screenshot in Browser Frame */}
+              <div className="card-reveal-right map-showcase-column">
+                <div className="map-browser-frame">
+                  <div className="map-browser-bar">
+                    <div className="map-browser-dots">
+                      <span className="dot-red"></span>
+                      <span className="dot-yellow"></span>
+                      <span className="dot-green"></span>
+                    </div>
+                    <div className="map-browser-address">
+                      <Lock size={10} style={{ opacity: 0.5 }} />
+                      <span>localhost:5173/peta</span>
+                    </div>
+                    <div className="map-browser-badge">
+                      <Sparkles size={10} />
+                      <span>React SPA</span>
+                    </div>
+                  </div>
+                  <div className="map-screenshot-wrapper">
+                    <img 
+                      src={imgPetaBaru}
+                      alt="Screenshot Peta inPETA Aceh - Tampilan Web GIS Interaktif" 
+                      className="map-screenshot-img"
+                      loading="lazy"
+                    />
+                    <div className="map-screenshot-overlay"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ── SECTION 7: HASIL IMPLEMENTASI ── */}
-        <section className="scroll-section section-wide" id="section-7">
+        <section className={`scroll-section section-wide feature-section ${currentSection === 7 ? 'active' : ''}`} id="section-7">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 07 — Daftar fungsionalitas sistem (Tabel Uji Fitur 4.2)</span>
-              <h2 className="section-title">Hasil Implementasi &amp; Pengujian Fitur</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 07 — Daftar Fungsionalitas Sistem (Tabel Uji Fitur 4.2)</span>
+              <h2 className="section-title-modern">Hasil Implementasi &amp; Pengujian Fitur</h2>
             </div>
 
-            <div className="glass-card-3d">
+            <div className="premium-glass-card feature-card-premium card-reveal-below">
               <FeatureTable />
             </div>
           </div>
         </section>
 
         {/* ── SECTION 8: LIGHTHOUSE PERFORMANCE ── */}
-        <section className="scroll-section" id="section-8">
+        <section className={`scroll-section perf-section ${currentSection === 8 ? 'active' : ''}`} id="section-8">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 08 — Skor Audit Google Lighthouse &amp; Dampak User Experience</span>
-              <h2 className="section-title">Evaluasi Peningkatan Kinerja</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 08 — Skor Audit Google Lighthouse &amp; Dampak User Experience</span>
+              <h2 className="section-title-modern">Evaluasi Peningkatan Kinerja</h2>
             </div>
 
-            <div className="glass-card-3d">
+            <div className="premium-glass-card performance-card-premium card-reveal-below">
               <PerformanceGauges />
             </div>
           </div>
         </section>
 
         {/* ── SECTION 9: KESIMPULAN ── */}
-        <section className="scroll-section" id="section-9">
+        <section className={`scroll-section closing-section ${currentSection === 9 ? 'active' : ''}`} id="section-9">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 09 — Penutupan dan arahan pengembangan masa depan</span>
-              <h2 className="section-title">Kesimpulan &amp; Rekomendasi</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 09 — Penutupan &amp; Arahan Masa Depan</span>
+              <h2 className="section-title-modern">Kesimpulan &amp; Rekomendasi</h2>
             </div>
 
-            <div className="content-grid two-col">
-              <div className="glass-card-3d">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle size={18} /> Kesimpulan Proyek
+            <div className="content-grid two-col" style={{ marginBottom: '2.5rem' }}>
+              <div className="premium-glass-card card-reveal-left">
+                <h3 className="card-inner-title">
+                  <CheckCircle size={18} className="icon-pulse" /> Kesimpulan Proyek
                 </h3>
-                <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
-                  Proses <strong>re-engineering Web GIS inPETA Aceh</strong> berhasil diselesaikan dengan transisi arsitektur ke <strong>React.js SPA</strong>. 
+                <p className="card-description">
+                  Proses <strong>re-engineering Web GIS inPETA Aceh</strong> berhasil diselesaikan dengan transisi arsitektur ke <strong>React.js SPA</strong>.
                 </p>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', paddingLeft: '1.2rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  <li><strong>Navigasi Seamless:</strong> Waktu rendering terpangkas drastis tanpa perlu pemuatan ulang halaman penuh.</li>
-                  <li><strong>Aksesibilitas Mobile:</strong> Antarmuka terbukti responsif saat diuji pada berbagai resolusi browser smartphone.</li>
-                  <li><strong>Manajemen Efisien:</strong> Panel Admin berhasil memusatkan kelola data (CRUD) sehingga mempermudah operasional staf statistik.</li>
+                <ul className="closing-list">
+                  <li className="closing-list-item"><strong>Navigasi Seamless:</strong> Waktu rendering terpangkas drastis tanpa perlu pemuatan ulang halaman penuh.</li>
+                  <li className="closing-list-item"><strong>Aksesibilitas Mobile:</strong> Antarmuka terbukti responsif saat diuji pada berbagai resolusi browser smartphone.</li>
+                  <li className="closing-list-item"><strong>Manajemen Efisien:</strong> Panel Admin berhasil memusatkan kelola data (CRUD) sehingga mempermudah operasional staf statistik.</li>
                 </ul>
               </div>
 
-              <div className="glass-card-3d">
-                <h3 style={{ color: 'var(--accent)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div className="premium-glass-card card-accent-green card-reveal-right">
+                <h3 className="card-inner-title accent-green">
                   <HelpCircle size={18} /> Saran &amp; Rekomendasi
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.8rem' }}>
-                  <div className="benefit-item" style={{ borderLeftColor: 'var(--primary)' }}>
-                    <strong>Untuk Instansi:</strong> Memperbarui data peta secara berkala untuk menjaga akurasi serta merencanakan rilis aplikasi mobile mandiri.
+                <div className="closing-recommendations">
+                  <div className="premium-benefit-item benefit-accent-blue">
+                    <strong className="recommendation-target">Untuk Instansi:</strong>
+                    <p className="recommendation-text">Memperbarui data peta secara berkala untuk menjaga akurasi serta merencanakan rilis aplikasi mobile mandiri.</p>
                   </div>
-                  <div className="benefit-item" style={{ borderLeftColor: 'var(--accent)' }}>
-                    <strong>Untuk Mahasiswa:</strong> Mengasah penguasaan backend Node.js dan pemodelan database PostgreSQL lebih mendalam.
+                  <div className="premium-benefit-item benefit-accent-green">
+                    <strong className="recommendation-target">Untuk Mahasiswa:</strong>
+                    <p className="recommendation-text">Mengasah penguasaan backend Node.js dan pemodelan database PostgreSQL lebih mendalam.</p>
                   </div>
-                  <div className="benefit-item" style={{ borderLeftColor: 'var(--warning)' }}>
-                    <strong>Untuk Kampus:</strong> Meningkatkan materi kuliah berbasis praktik pemrograman web modern dan visualisasi peta geospasial (GIS).
+                  <div className="premium-benefit-item benefit-accent-purple">
+                    <strong className="recommendation-target">Untuk Kampus:</strong>
+                    <p className="recommendation-text">Meningkatkan materi kuliah berbasis praktik pemrograman web modern dan visualisasi peta geospasial (GIS).</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Thank you footer */}
-            <div className="thank-you">
-              <h2 className="text-gradient" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
+            <div className="premium-thank-you thank-you-reveal">
+              <h2 className="thank-you-title text-gradient">
                 Terima Kasih
               </h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+              <p className="thank-you-subtitle">
                 Yogi Prasetya Sadewa — Program Studi Ilmu Komputer — Universitas Bina Bangsa Getsempena
               </p>
             </div>
