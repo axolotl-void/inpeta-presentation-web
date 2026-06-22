@@ -7,7 +7,6 @@ import {
 import InteractiveMap from './components/InteractiveMap';
 import PerformanceGauges from './components/PerformanceGauges';
 import FeatureTable from './components/FeatureTable';
-import Scene3D from './components/Scene3D';
 import WebGLGlobe from './components/WebGLGlobe';
 import SectionIndicator from './components/SectionIndicator';
 import useScrollProgress from './hooks/useScrollProgress';
@@ -29,15 +28,10 @@ export default function App() {
     document.body.className = 'dark-theme';
   }, []);
 
-  const showLaptop = scrollProgress >= 0.35 && scrollProgress < 0.85;
-
   return (
     <>
       {/* === WebGL EARTH 3D LAYER (fixed behind everything) === */}
       <WebGLGlobe scrollProgress={scrollProgress} />
-
-      {/* === 3D CANVAS LAYER (fixed behind everything) === */}
-      {showLaptop && <Scene3D scrollProgress={scrollProgress} />}
 
       {/* === FLOATING NAV BAR === */}
       <nav className="navbar-3d" id="navbar-3d">
@@ -417,60 +411,127 @@ export default function App() {
         </section>
 
         {/* ── SECTION 5: TEKNOLOGI & ARSITEKTUR ── */}
-        <section className="scroll-section" id="section-5">
+        <section className={`scroll-section tech-section ${currentSection === 5 ? 'active' : ''}`} id="section-5">
           <div className="section-inner">
-            <div className="section-header">
-              <span className="section-tag">BAGIAN 05 — Framework dan library pendukung dalam pembangunan SPA</span>
-              <h2 className="section-title">Teknologi &amp; Arsitektur Sistem Baru</h2>
+            <div className="section-header-modern">
+              <span className="section-tag-modern">BAGIAN 05 — Framework dan library pendukung dalam pembangunan SPA</span>
+              <h2 className="section-title-modern">Teknologi &amp; Arsitektur Sistem Baru</h2>
             </div>
 
             <div className="content-grid two-col">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <p style={{ fontSize: '0.95rem', marginBottom: '0.5rem' }}>
-                  Ekosistem teknologi inPETA baru dirancang dengan arsitektur terpisah (decoupled) untuk performa optimal dan kemudahan pemeliharaan:
+              <div className="card-reveal-left tech-cards-container">
+                <p className="tech-intro-text">
+                  Ekosistem teknologi inPETA baru dirancang dengan arsitektur terpisah (*decoupled*) untuk performa optimal, loading cepat, dan kemudahan pemeliharaan jangka panjang:
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                  <div className="glass-card-3d tech-item">
-                    <div style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <Cpu size={16} /> React.js
+                <div className="tech-grid-modern">
+                  <div className="premium-glass-card tech-card tech-card-react">
+                    <div className="tech-card-header">
+                      <Cpu size={18} className="tech-card-icon react-color" />
+                      <span className="tech-card-name">React.js (Frontend)</span>
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                      Library UI utama untuk merakit antarmuka modular berbasis komponen, memanfaatkan Virtual DOM untuk render cepat.
+                    <p className="tech-card-description">
+                      Pustaka UI utama untuk merakit antarmuka modular berbasis komponen, memanfaatkan Virtual DOM untuk perenderan performa tinggi.
                     </p>
                   </div>
 
-                  <div className="glass-card-3d tech-item">
-                    <div style={{ color: 'var(--accent)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <Layers size={16} /> Leaflet.js
+                  <div className="premium-glass-card tech-card tech-card-leaflet">
+                    <div className="tech-card-header">
+                      <Layers size={18} className="tech-card-icon leaflet-color" />
+                      <span className="tech-card-name">Leaflet.js (GIS Map)</span>
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                      Library pemetaan open-source yang ringan, disematkan melalui react-leaflet untuk layer spasial GIS.
+                    <p className="tech-card-description">
+                      Pustaka pemetaan open-source yang sangat ringan untuk mengelola layer spasial, marker interaktif, dan kontrol peta.
                     </p>
                   </div>
 
-                  <div className="glass-card-3d tech-item">
-                    <div style={{ color: '#83cd29', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <Activity size={16} /> Node.js &amp; Express
+                  <div className="premium-glass-card tech-card tech-card-node">
+                    <div className="tech-card-header">
+                      <Activity size={18} className="tech-card-icon node-color" />
+                      <span className="tech-card-name">Node.js &amp; Express (API)</span>
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                      Runtime server-side untuk melayani endpoint RESTful API secara asinkron dengan konsep non-blocking I/O.
+                    <p className="tech-card-description">
+                      Server-side runtime asinkron dengan konsep non-blocking I/O untuk melayani permintaan data spasial secara real-time.
                     </p>
                   </div>
 
-                  <div className="glass-card-3d tech-item">
-                    <div style={{ color: '#336791', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <ListChecks size={16} /> PostgreSQL
+                  <div className="premium-glass-card tech-card tech-card-postgres">
+                    <div className="tech-card-header">
+                      <ListChecks size={18} className="tech-card-icon postgres-color" />
+                      <span className="tech-card-name">PostgreSQL (Database)</span>
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                      RDBMS relasional kelas enterprise untuk mengelola penyimpanan tabel relasi data spasial peternakan.
+                    <p className="tech-card-description">
+                      RDBMS relasional enterprise untuk mengelola penyimpanan tabel relasi data spasial peternakan secara aman.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="laptop-spacer" style={{ pointerEvents: 'none' }}>
-                {/* Empty column to let the 3D laptop float beautifully on the right side */}
+              <div className="card-reveal-right tech-arch-container">
+                <div className="premium-glass-card tech-arch-card">
+                  <div className="arch-header">
+                    <Sparkles size={16} className="text-blue" />
+                    <span>Visualisasi Aliran Data (Decoupled Flow)</span>
+                  </div>
+                  
+                  <div className="arch-diagram">
+                    {/* Node 1: Client */}
+                    <div className="arch-node arch-node-client">
+                      <div className="node-icon-wrapper react-bg">
+                        <Cpu size={18} className="node-icon" />
+                      </div>
+                      <div className="node-info">
+                        <span className="node-title">Client Tier (Frontend)</span>
+                        <span className="node-subtitle">React.js &amp; Leaflet</span>
+                      </div>
+                    </div>
+
+                    {/* Connection 1 */}
+                    <div className="arch-connection">
+                      <div className="connection-line">
+                        <span className="connection-pulse"></span>
+                      </div>
+                      <span className="connection-label">REST API (HTTP)</span>
+                    </div>
+
+                    {/* Node 2: Server */}
+                    <div className="arch-node arch-node-server">
+                      <div className="node-icon-wrapper node-bg">
+                        <Activity size={18} className="node-icon" />
+                      </div>
+                      <div className="node-info">
+                        <span className="node-title">API Tier (Backend)</span>
+                        <span className="node-subtitle">Node.js &amp; Express</span>
+                      </div>
+                    </div>
+
+                    {/* Connection 2 */}
+                    <div className="arch-connection">
+                      <div className="connection-line">
+                        <span className="connection-pulse"></span>
+                      </div>
+                      <span className="connection-label">SQL Query</span>
+                    </div>
+
+                    {/* Node 3: Database */}
+                    <div className="arch-node arch-node-db">
+                      <div className="node-icon-wrapper postgres-bg">
+                        <ListChecks size={18} className="node-icon" />
+                      </div>
+                      <div className="node-info">
+                        <span className="node-title">Database Tier</span>
+                        <span className="node-subtitle">PostgreSQL RDBMS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="arch-footer">
+                    <div className="arch-badge">
+                      <span className="badge-dot"></span>
+                      <span>Arsitektur terpisah ini meniadakan lag render, menghasilkan UI 60 FPS yang responsif.</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

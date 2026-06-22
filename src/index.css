@@ -1634,3 +1634,333 @@ strong { color: var(--text-main); }
   filter: blur(0px);
   transition-delay: 0.6s;
 }
+
+/* ==========================================
+   SECTION 5: TEKNOLOGI & ARSITEKTUR OVERHAUL
+   ========================================== */
+.tech-section {
+  position: relative;
+  z-index: 3;
+}
+
+.tech-intro-text {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.tech-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+/* Premium Tech Cards */
+.tech-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tech-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  transition: all 0.4s ease;
+}
+
+.tech-card:hover {
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Card Accents & Left Borders */
+.tech-card-react::before {
+  background: linear-gradient(to bottom, #61dafb, #00d2ff);
+  box-shadow: 0 0 8px rgba(97, 218, 251, 0.4);
+}
+.tech-card-react:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(97, 218, 251, 0.06);
+}
+
+.tech-card-leaflet::before {
+  background: linear-gradient(to bottom, #10b981, #059669);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+.tech-card-leaflet:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(16, 185, 129, 0.06);
+}
+
+.tech-card-node::before {
+  background: linear-gradient(to bottom, #83cd29, #4d7c0f);
+  box-shadow: 0 0 8px rgba(131, 205, 41, 0.4);
+}
+.tech-card-node:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(131, 205, 41, 0.06);
+}
+
+.tech-card-postgres::before {
+  background: linear-gradient(to bottom, #336791, #1e3a8a);
+  box-shadow: 0 0 8px rgba(51, 103, 145, 0.4);
+}
+.tech-card-postgres:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(51, 103, 145, 0.06);
+}
+
+.tech-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tech-card-icon {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.tech-card-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.tech-card-description {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Technology Colors */
+.react-color { color: #61dafb; }
+.leaflet-color { color: #10b981; }
+.node-color { color: #83cd29; }
+.postgres-color { color: #528fc4; }
+
+/* Architecture Diagram Panel */
+.tech-arch-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+              rgba(255, 255, 255, 0.015) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mesh grid background */
+.tech-arch-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.arch-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 2;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.75rem;
+}
+
+.arch-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  z-index: 2;
+}
+
+/* Architecture Node */
+.arch-node {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 280px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.arch-node:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(15, 23, 42, 0.8);
+  transform: scale(1.02);
+}
+
+.node-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node-icon {
+  color: #fff;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.4));
+}
+
+.react-bg { background: linear-gradient(135deg, #0284c7, #61dafb); }
+.node-bg { background: linear-gradient(135deg, #15803d, #83cd29); }
+.postgres-bg { background: linear-gradient(135deg, #1e3a8a, #38bdf8); }
+
+.node-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #f8fafc;
+}
+
+.node-subtitle {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* Connection Lines & Pulses */
+.arch-connection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.connection-line {
+  position: relative;
+  width: 2px;
+  height: 35px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+}
+
+.connection-pulse {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #60a5fa;
+  box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+  animation: data-flow-down 2s infinite linear;
+}
+
+.connection-label {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+@keyframes data-flow-down {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.arch-footer {
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.75rem;
+}
+
+.arch-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* Staggered Entrance Reveal for Section 5 */
+.tech-section .card-reveal-left,
+.tech-section .card-reveal-right {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-section .card-reveal-left {
+  transform: translateX(-60px) rotateY(15deg) scale(0.96);
+  transform-origin: right center;
+}
+
+.tech-section .card-reveal-right {
+  transform: translateX(60px) rotateY(-15deg) scale(0.96);
+  transform-origin: left center;
+}
+
+/* Active Entrance Trigger for Section 5 */
+.tech-section.active .card-reveal-left {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 0.3s;
+}
+
+.tech-section.active .card-reveal-right {
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  filter: blur(0px);
+  transition-delay: 0.6s;
+}
+
+@media (max-width: 991px) {
+  .tech-grid-modern {
+    grid-template-columns: 1fr;
+  }
+}
+
