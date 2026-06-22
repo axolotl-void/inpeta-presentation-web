@@ -1,0 +1,1008 @@
+/* ============================================================
+   ██████   COMPREHENSIVE MOBILE & TABLET RESPONSIVE OVERHAUL
+   ============================================================
+   Rules below ONLY affect screens ≤ 991px.
+   Desktop layout (> 991px) is completely untouched.
+   ============================================================ */
+
+/* ── TABLET (≤ 991px) ─────────────────────────────────────── */
+@media (max-width: 991px) {
+
+  /* 3D Globe — smaller on tablet */
+  .earth-container-3d {
+    top: -10vh;
+    left: -30vw;
+    width: 160vw;
+    height: 120vh;
+  }
+
+  .earth-atmosphere-glow {
+    width: 50vh;
+    height: 50vh;
+  }
+
+  /* Section Inner — slightly narrower */
+  .section-inner {
+    max-width: 95vw;
+  }
+
+  .section-wide .section-inner {
+    max-width: 95vw;
+  }
+
+  /* Two-col grids collapse to single column on tablet */
+  .two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .map-section .two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Map showcase column — full width */
+  .map-info-column,
+  .map-showcase-column {
+    width: 100%;
+  }
+
+  /* Tech grid — 2 columns */
+  .tech-grid-modern {
+    grid-template-columns: 1fr;
+  }
+
+  /* Card reveal animations — simplify to vertical for mobile */
+  .masalah-section .card-reveal-left,
+  .tujuan-section .card-reveal-left,
+  .tech-section .card-reveal-left,
+  .closing-section .card-reveal-left,
+  .map-section .card-reveal-left {
+    transform: translateY(40px) scale(0.97);
+    transform-origin: center center;
+  }
+
+  .masalah-section .card-reveal-right,
+  .tujuan-section .card-reveal-right,
+  .tech-section .card-reveal-right,
+  .closing-section .card-reveal-right,
+  .map-section .card-reveal-right {
+    transform: translateY(40px) scale(0.97);
+    transform-origin: center center;
+  }
+
+  .masalah-section.active .card-reveal-left,
+  .masalah-section.active .card-reveal-right,
+  .tujuan-section.active .card-reveal-left,
+  .tujuan-section.active .card-reveal-right,
+  .tech-section.active .card-reveal-left,
+  .tech-section.active .card-reveal-right,
+  .closing-section.active .card-reveal-left,
+  .closing-section.active .card-reveal-right,
+  .map-section.active .card-reveal-left,
+  .map-section.active .card-reveal-right {
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ── MOBILE (≤ 768px) ─────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* ── Base Layout ── */
+  .scroll-section {
+    padding: 4rem 1rem 2.5rem;
+    min-height: auto;
+  }
+
+  .section-inner {
+    max-width: 100%;
+  }
+
+  /* ── Navbar Compaction ── */
+  .navbar-3d {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .navbar-3d-inner {
+    padding: 0.45rem 0.7rem;
+    border-radius: 10px;
+    gap: 0.4rem;
+  }
+
+  .nav-brand {
+    font-size: 0.8rem;
+  }
+
+  .nav-brand img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-page-indicators {
+    gap: 0.15rem;
+  }
+
+  .nav-page-box {
+    width: 22px;
+    height: 22px;
+    font-size: 0.55rem;
+    border-radius: 5px;
+  }
+
+  .nav-right-info {
+    display: none !important;
+  }
+
+  .nav-badge {
+    display: none !important;
+  }
+
+  /* ── Section Header ── */
+  .section-header-modern {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-tag-modern {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .section-title-modern {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  /* ── Section Indicator (right dots) ── */
+  .section-indicator {
+    right: 0.4rem;
+    gap: 0.35rem;
+  }
+
+  .indicator-label {
+    display: none;
+  }
+
+  .indicator-line {
+    width: 12px;
+  }
+
+  .indicator-dot.active .indicator-line {
+    width: 22px;
+  }
+
+  /* ── Scroll Progress Bar ── */
+  .scroll-progress-bar {
+    width: 2px;
+  }
+
+  /* ── SECTION 1: HERO ── */
+  .hero-section {
+    min-height: 100vh;
+    padding-top: 4rem;
+  }
+
+  .hero-inner {
+    min-height: 80vh;
+    gap: 0;
+    padding: 0 0.5rem;
+  }
+
+  .hero-badge {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-line-1 {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-line-2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-line-3 {
+    font-size: 1.7rem;
+  }
+
+  .subtitle-glass-frame {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.2rem;
+    border-radius: 10px;
+  }
+
+  .subtitle-glass-frame .hero-subtitle {
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+
+  /* Profile cards — stack vertically */
+  .profile-cards-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    padding-top: 0;
+  }
+
+  .profile-card {
+    width: 90%;
+    max-width: 320px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-template-areas: 
+      "photo label"
+      "photo name"
+      "photo id";
+    gap: 0.2rem 1rem;
+    text-align: left;
+    align-items: center;
+  }
+
+  .profile-photo-wrapper {
+    grid-area: photo;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+  }
+
+  .profile-card-role,
+  .profile-card-label {
+    grid-area: label;
+    font-size: 0.6rem;
+    margin: 0;
+    align-self: end;
+  }
+
+  .profile-card-name {
+    grid-area: name;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  .profile-card-id {
+    grid-area: id;
+    font-size: 0.62rem;
+    margin: 0;
+    align-self: start;
+  }
+
+  .scroll-cta {
+    margin-top: 1rem;
+    font-size: 0.65rem;
+  }
+
+  /* ── SECTION 2: INSTANSI ── */
+  .instansi-inner {
+    padding-top: 4rem;
+  }
+
+  .split-layout-left {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  /* ── SECTION 3: MASALAH — Before/After ── */
+  .section-intro-text {
+    font-size: 0.82rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+    line-height: 1.6;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+  }
+
+  .content-grid {
+    gap: 1.25rem;
+  }
+
+  .masalah-section {
+    padding-top: 5.5rem !important; /* Prevent overlap with the floating navbar */
+  }
+
+  .before-after-container {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  /* Reset hover effects on mobile to prevent sticky touch states */
+  .before-after-container:hover .ba-card {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .before-after-container .ba-card:hover {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: translateY(-4px) !important;
+  }
+
+  .ba-card {
+    padding: 1.15rem 1rem !important;
+    border-radius: 10px !important;
+  }
+
+  .ba-card.before {
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .ba-card.after {
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .ba-label {
+    font-size: 0.6rem;
+  }
+
+  .browser-mockup {
+    margin-bottom: 1rem;
+    border-radius: 8px !important;
+    max-height: 140px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35) !important;
+  }
+
+  .browser-header {
+    height: 28px !important;
+    padding: 0 8px !important;
+    gap: 6px !important;
+  }
+
+  .browser-dot {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  .browser-nav-icons {
+    display: none !important; /* Hide to save horizontal space on mobile */
+  }
+
+  .browser-address {
+    height: 16px !important;
+    font-size: 0.6rem !important;
+    padding: 0 6px !important;
+  }
+
+  .browser-badge {
+    font-size: 0.48rem !important;
+    padding: 0.05rem 0.25rem !important;
+  }
+
+  .browser-body {
+    aspect-ratio: auto !important;
+    height: 95px !important;
+  }
+
+  .custom-icon-list {
+    gap: 0.75rem !important;
+    margin-top: 0.85rem !important;
+  }
+
+  .custom-list-item {
+    font-size: 0.76rem !important;
+    line-height: 1.45 !important;
+    gap: 0.65rem !important;
+  }
+
+  .custom-list-item strong {
+    font-size: 0.78rem;
+  }
+
+  .list-icon {
+    width: 14px !important;
+    height: 14px !important;
+    margin-top: 0.12rem !important;
+  }
+
+  /* ── SECTION 4: TUJUAN — benefit items ── */
+  .premium-benefit-item {
+    padding: 0.7rem 0.85rem 0.75rem 1rem;
+  }
+
+  .benefit-title {
+    font-size: 0.85rem;
+  }
+
+  .benefit-text {
+    font-size: 0.78rem;
+  }
+
+  /* ── SECTION 5: TEKNOLOGI — tech grid ── */
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .tech-grid-modern {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  /* ── SECTION 6: MAP SHOWCASE ── */
+  .map-section .two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .map-desc-card {
+    padding: 1.15rem;
+  }
+
+  .map-desc-header {
+    font-size: 0.9rem;
+  }
+
+  .map-desc-text {
+    font-size: 0.8rem;
+  }
+
+  .map-feature-item {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .map-stats-grid {
+    gap: 0.5rem;
+  }
+
+  .map-stat-value {
+    font-size: 1.3rem;
+  }
+
+  .map-stat-label {
+    font-size: 0.6rem;
+  }
+
+  .map-browser-bar {
+    padding: 0.45rem 0.7rem;
+    gap: 0.5rem;
+  }
+
+  .map-browser-dots span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .map-browser-address {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .map-browser-badge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  /* ── SECTION 7: FEATURE TABLE ── */
+  .feature-metrics-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .metrics-title {
+    font-size: 1.4rem;
+  }
+
+  .metrics-detail {
+    font-size: 0.78rem;
+    margin-left: 0;
+    display: block;
+  }
+
+  .feature-progress-container {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .feature-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .feature-filter-buttons {
+    justify-content: flex-start;
+  }
+
+  .feature-filter-btn {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .custom-table-container {
+    max-height: 350px;
+    border-radius: 10px;
+  }
+
+  .custom-table th, .custom-table td {
+    padding: 0.65rem 0.6rem;
+    font-size: 0.72rem;
+  }
+
+  .custom-table th {
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* Hide backend column on mobile */
+  .col-backend,
+  .col-backend-val {
+    display: none;
+  }
+
+  .col-no { width: 8%; }
+  .col-name { width: 35%; }
+  .col-frontend { width: 35%; }
+  .col-status { width: 22%; }
+
+  .status-badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.45rem;
+    gap: 0.2rem;
+  }
+
+  /* ── SECTION 8: PERFORMANCE ── */
+  .perf-toggle-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .perf-gauge-card {
+    padding: 0.85rem 0.6rem;
+  }
+
+  /* ── SECTION 9: CLOSING ── */
+  .closing-list-item {
+    font-size: 0.78rem;
+  }
+
+  .closing-recommendations .premium-benefit-item {
+    padding: 0.65rem 0.85rem 0.7rem 1rem;
+  }
+
+  .recommendation-target {
+    font-size: 0.78rem;
+  }
+
+  .recommendation-text {
+    font-size: 0.72rem;
+  }
+
+  .thank-you-title {
+    font-size: 1.6rem;
+  }
+
+  .thank-you-subtitle {
+    font-size: 0.78rem;
+  }
+
+  /* ── Premium Glass Cards — compact padding on mobile ── */
+  .premium-glass-card {
+    padding: 1.1rem;
+    border-radius: 12px;
+  }
+
+  .feature-card-premium {
+    padding: 1rem 1.1rem;
+  }
+
+  /* ── 3D Globe — size and show on mobile ── */
+  .earth-container-3d {
+    display: block !important;
+    top: -15vh;
+    left: -45vw;
+    width: 190vw;
+    height: 130vh;
+  }
+
+  .earth-atmosphere-glow {
+    display: block !important;
+    width: 48vh;
+    height: 48vh;
+  }
+}
+
+
+/* ── SMALL MOBILE (≤ 480px) ───────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* ── Base ── */
+  .scroll-section {
+    padding: 3.5rem 0.75rem 2rem;
+  }
+
+  /* ── Navbar — ultra compact ── */
+  .navbar-3d {
+    padding: 0.35rem 0.5rem;
+  }
+
+  .navbar-3d-inner {
+    padding: 0.35rem 0.55rem;
+    border-radius: 8px;
+  }
+
+  .nav-brand {
+    font-size: 0.7rem;
+    gap: 0.3rem;
+  }
+
+  .nav-brand img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-page-box {
+    width: 20px;
+    height: 20px;
+    font-size: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .nav-page-indicators {
+    gap: 0.1rem;
+  }
+
+  /* ── HERO ── */
+  .hero-line-1 {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-line-2 {
+    font-size: 1.1rem;
+  }
+
+  .hero-line-3 {
+    font-size: 1.45rem;
+  }
+
+  .hero-badge {
+    font-size: 0.52rem;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .subtitle-glass-frame {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .subtitle-glass-frame .hero-subtitle {
+    font-size: 0.68rem;
+    line-height: 1.65;
+  }
+
+  .profile-card {
+    width: 95%;
+    padding: 0.85rem;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-areas: 
+      "photo label"
+      "photo name"
+      "photo id";
+    gap: 0.15rem 0.8rem;
+  }
+
+  .profile-photo-wrapper {
+    grid-area: photo;
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-card-name {
+    font-size: 0.78rem;
+  }
+
+  /* ── Section Headers ── */
+  .section-tag-modern {
+    font-size: 0.52rem;
+  }
+
+  .section-title-modern {
+    font-size: 1.15rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+
+  /* ── Section Intro Text ── */
+  .section-intro-text {
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  /* ── Cards ── */
+  .premium-glass-card {
+    padding: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .content-grid {
+    gap: 1rem;
+  }
+
+  /* ── Custom List Items ── */
+  .custom-list-item {
+    font-size: 0.75rem;
+    gap: 0.6rem;
+  }
+
+  .list-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ── Section 4: Benefits ── */
+  .premium-benefit-item {
+    padding: 0.6rem 0.7rem 0.65rem 0.85rem;
+  }
+
+  .benefit-title {
+    font-size: 0.78rem;
+  }
+
+  .benefit-text {
+    font-size: 0.72rem;
+  }
+
+  /* ── Section 6: Map ── */
+  .map-feature-item {
+    font-size: 0.72rem;
+  }
+
+  .map-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .map-stat-value {
+    font-size: 1.1rem;
+  }
+
+  .map-stat-label {
+    font-size: 0.55rem;
+  }
+
+  .map-desc-header {
+    font-size: 0.82rem;
+  }
+
+  .map-desc-text {
+    font-size: 0.75rem;
+  }
+
+  /* ── Section 7: Feature Table — more compact ── */
+  .feature-metrics-banner {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .metrics-title {
+    font-size: 1.2rem;
+  }
+
+  .metrics-label {
+    font-size: 0.6rem;
+  }
+
+  .custom-table th, .custom-table td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  .col-name-val {
+    font-size: 0.65rem;
+  }
+
+  .status-badge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  /* ── Section 8: Performance ── */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .perf-gauge-card {
+    padding: 0.7rem 0.5rem;
+  }
+
+  /* ── Section 9: Closing ── */
+  .closing-list-item {
+    font-size: 0.72rem;
+  }
+
+  .thank-you-title {
+    font-size: 1.3rem;
+  }
+
+  .thank-you-subtitle {
+    font-size: 0.72rem;
+  }
+
+  .premium-thank-you {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+  }
+
+  /* ── Section indicator hide on very small screens ── */
+  .section-indicator {
+    display: none;
+  }
+}
+
+
+/* ── VERY SMALL MOBILE (≤ 360px) ──────────────────────────── */
+@media (max-width: 360px) {
+
+  .navbar-3d-inner {
+    padding: 0.3rem 0.4rem;
+  }
+
+  .nav-page-box {
+    width: 18px;
+    height: 18px;
+    font-size: 0.45rem;
+  }
+
+  .hero-line-2 {
+    font-size: 0.95rem;
+  }
+
+  .hero-line-3 {
+    font-size: 1.25rem;
+  }
+
+  .subtitle-glass-frame .hero-subtitle {
+    font-size: 0.62rem;
+  }
+
+  .profile-card {
+    width: 98%;
+    padding: 0.75rem 0.6rem;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-areas: 
+      "photo label"
+      "photo name"
+      "photo id";
+    gap: 0.1rem 0.6rem;
+  }
+
+  .profile-photo-wrapper {
+    grid-area: photo;
+    width: 44px;
+    height: 44px;
+  }
+
+  .section-title-modern {
+    font-size: 1rem;
+  }
+
+  .section-tag-modern {
+    font-size: 0.48rem;
+  }
+
+  .custom-table th, .custom-table td {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.58rem;
+  }
+
+  /* Also hide frontend column on very small screens */
+  .col-frontend,
+  .col-frontend-val {
+    display: none;
+  }
+
+  .col-no { width: 12%; }
+  .col-name { width: 50%; }
+  .col-status { width: 38%; }
+}
+
+
+/* ── iPad / Tablet Landscape (768px - 1024px) ─────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .scroll-section {
+    padding: 4.5rem 1.5rem 2.5rem;
+  }
+
+  .section-inner {
+    max-width: 90vw;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .profile-cards-row {
+    gap: 1rem;
+  }
+
+  .profile-card {
+    width: 200px;
+    padding: 1.2rem 1rem 1rem;
+  }
+
+  .profile-photo-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .hero-line-3 {
+    font-size: 2.5rem;
+  }
+
+  .tech-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .map-section .two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .feature-metrics-banner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-page-box {
+    width: 26px;
+    height: 26px;
+    font-size: 0.6rem;
+  }
+
+  /* 3D Globe — reduce for tablets */
+  .earth-container-3d {
+    top: -15vh;
+    left: -35vw;
+    width: 170vw;
+    height: 130vh;
+  }
+}
+
+/* ── MOBILE SCROLL PERFORMANCE OPTIMIZATIONS ──────────────── */
+@media (max-width: 768px) {
+  /* Disable expensive backdrop-filters to resolve severe scroll lag / frame drops on mobile */
+  .navbar-3d-inner,
+  .premium-glass-card,
+  .feature-card-premium,
+  .subtitle-glass-frame,
+  .profile-card,
+  .map-desc-card,
+  .perf-gauge-card,
+  .custom-table-container,
+  .perf-summary-card,
+  .ba-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(18, 24, 38, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* Disable fixed background attachment which triggers heavy repaints during mobile scrolls */
+  html, body {
+    background-attachment: scroll !important;
+  }
+}
+
+

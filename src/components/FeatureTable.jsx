@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckCircle2, Clock } from 'lucide-react';
 
 const featureData = [
   { id: 1, name: "Login Admin", backend: "Autentikasi & JWT Token", frontend: "Form Login + Protect Route", status: true },
@@ -101,7 +102,7 @@ export default function FeatureTable() {
           <tbody>
             {filteredFeatures.length > 0 ? (
               filteredFeatures.map((feat, index) => (
-                <tr key={feat.id}>
+                <tr key={feat.id} className="animated-row" style={{ animationDelay: `${index * 0.05}s` }}>
                   <td className="col-no-val">{index + 1}</td>
                   <td className="col-name-val">{feat.name}</td>
                   <td className="col-backend-val">{feat.backend}</td>
@@ -109,11 +110,11 @@ export default function FeatureTable() {
                   <td className="col-status-val">
                     {feat.status ? (
                       <span className="status-badge status-success">
-                        ✔️ Sukses
+                        <CheckCircle2 size={14} strokeWidth={3} /> Selesai
                       </span>
                     ) : (
                       <span className="status-badge status-pending">
-                        ❌ Belum
+                        <Clock size={14} strokeWidth={3} /> Belum
                       </span>
                     )}
                   </td>

@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
  *   - Fade back in Section 9 (p >= 0.88)
  */
 export default function WebGLGlobe({ scrollProgress = 0 }) {
+  const wrapperRef = useRef(null);
   const containerRef = useRef(null);
   const earthRef = useRef(null);
   const markerRef = useRef(null);
@@ -20,11 +21,6 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
   // State values for interpolation
   const currentCoords = useRef({ lat: 0, lng: 95.33, zoom: 2.0 });
   const currentTransform = useRef({ x: 0, y: 120, scale: 1 });
-  const [styles, setStyles] = useState({
-    opacity: 0,
-    transform: 'translate(0vw, 120vh) scale(1)',
-    display: 'block'
-  });
 
   const scrollProgressRef = useRef(scrollProgress);
   useEffect(() => {
@@ -82,7 +78,6 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
 
   // Animation & Interpolation Loop
   useEffect(() => {
-
     let before = performance.now();
     let autoRotateLng = 95.33;
 
@@ -114,7 +109,7 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
       // Smooth easing: cubic-bezier approximation
       const entranceEase = 1 - Math.pow(1 - entranceProgress, 3);
 
-      const isMobile = window.innerWidth <= 768;
+      const isMobileViewport = window.innerWidth <= 768;
 
       // ── Interpolate values based on Scroll Progress ──
       if (p < 0.11) {
@@ -139,7 +134,7 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
         targetZoom = 6.4;
         targetOpacity = 1;
 
-        if (isMobile) {
+        if (isMobileViewport) {
           targetX = 0;
           targetY = 22; // fixed shift down
           targetScale = 0.85; // fixed scale
@@ -158,7 +153,7 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
         targetZoom = 6.4 * (1 - progress) + 2.5 * progress;
         targetOpacity = 1 - progress * 0.4; // fade slightly
 
-        if (isMobile) {
+        if (isMobileViewport) {
           targetX = progress * 32;
           targetY = 22 * (1 - progress) - progress * 24;
           targetScale = (1 - 0.15) * (1 - progress) + 0.4 * progress;
@@ -236,12 +231,12 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
         }
       }
 
-      // Update CSS state
-      setStyles({
-        opacity: targetOpacity,
-        transform: targetTransform,
-        display: targetDisplay
-      });
+      // Update CSS DOM styles directly (extremely high performance, zero React re-renders)
+      if (wrapperRef.current) {
+        wrapperRef.current.style.opacity = targetOpacity;
+        wrapperRef.current.style.transform = targetTransform;
+        wrapperRef.current.style.display = targetDisplay;
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -257,11 +252,12 @@ export default function WebGLGlobe({ scrollProgress = 0 }) {
 
   return (
     <div 
+      ref={wrapperRef}
       className="earth-container-3d" 
       style={{
-        opacity: styles.opacity,
-        transform: styles.transform,
-        display: styles.display
+        opacity: 0,
+        transform: 'translate(0vw, 120vh) scale(1)',
+        display: 'block'
       }}
     >
       <div 

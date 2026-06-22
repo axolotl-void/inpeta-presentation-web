@@ -99,7 +99,7 @@ export default function App() {
               }}>
                 inPETA <span style={{ color: 'var(--primary)' }}>Aceh</span>
               </span>
-              <span style={{
+              <span className="nav-badge" style={{
                 background: 'rgba(59, 130, 246, 0.15)',
                 color: 'var(--primary)',
                 padding: '0.1rem 0.4rem',
@@ -131,7 +131,7 @@ export default function App() {
             ))}
           </div>
 
-          <div style={{
+          <div className="nav-right-info" style={{
             fontSize: '0.75rem',
             color: 'var(--text-muted)',
             background: 'rgba(255,255,255,0.03)',
