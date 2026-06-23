@@ -23,16 +23,11 @@ import imgPetaBaru from './assets/inpeta-foto/PETA INPETA BARU_11zon.png';
 
 export default function App() {
   const totalSections = 9;
-  const { scrollProgress, currentSection } = useScrollProgress(totalSections);
-  const [visitedSections, setVisitedSections] = useState(new Set([1]));
+  const { scrollProgress, currentSection, setCurrentSection } = useScrollProgress(totalSections);
+  const [maxSectionReached, setMaxSectionReached] = useState(1);
 
   useEffect(() => {
-    setVisitedSections(prev => {
-      if (prev.has(currentSection)) return prev;
-      const next = new Set(prev);
-      next.add(currentSection);
-      return next;
-    });
+    setMaxSectionReached(prev => Math.max(prev, currentSection));
   }, [currentSection]);
 
   // Force scroll to top on every page load / refresh
@@ -52,7 +47,10 @@ export default function App() {
   useEffect(() => {
     const scrollToSection = (num) => {
       const target = document.getElementById(`section-${num}`);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        setCurrentSection(num);
+      }
     };
 
     const handleKeyDown = (e) => {
@@ -86,7 +84,8 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentSection, totalSections]);
+  }, [currentSection, totalSections, setCurrentSection]);
+
 
 
   return (
@@ -132,7 +131,10 @@ export default function App() {
                 className={`nav-page-box ${currentSection === num ? 'active' : ''}`}
                 onClick={() => {
                   const target = document.getElementById(`section-${num}`);
-                  if (target) target.scrollIntoView({ behavior: 'smooth' });
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    setCurrentSection(num);
+                  }
                 }}
                 aria-label={`Go to section ${num}`}
               >
@@ -248,7 +250,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 2: PROFIL INSTANSI ── */}
-        <section className={`scroll-section instansi-section ${currentSection === 2 || visitedSections.has(2) ? 'active' : ''}`} id="section-2">
+        <section className={`scroll-section instansi-section ${maxSectionReached >= 2 ? 'active' : ''}`} id="section-2">
           <div className="section-inner instansi-inner">
             <div className="split-layout-left">
               <div className="section-header-modern">
@@ -311,7 +313,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 3: LATAR BELAKANG & MASALAH ── */}
-        <section className={`scroll-section masalah-section ${currentSection === 3 || visitedSections.has(3) ? 'active' : ''}`} id="section-3">
+        <section className={`scroll-section masalah-section ${maxSectionReached >= 3 ? 'active' : ''}`} id="section-3">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 03 — Mengapa re-engineering inPETA Aceh diperlukan?</span>
@@ -429,7 +431,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 4: TUJUAN & MANFAAT ── */}
-        <section className={`scroll-section tujuan-section ${currentSection === 4 || visitedSections.has(4) ? 'active' : ''}`} id="section-4">
+        <section className={`scroll-section tujuan-section ${maxSectionReached >= 4 ? 'active' : ''}`} id="section-4">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 04 — Target pencapaian dan nilai kontribusi proyek</span>
@@ -515,7 +517,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 5: TEKNOLOGI & ARSITEKTUR ── */}
-        <section className={`scroll-section tech-section ${currentSection === 5 || visitedSections.has(5) ? 'active' : ''}`} id="section-5">
+        <section className={`scroll-section tech-section ${maxSectionReached >= 5 ? 'active' : ''}`} id="section-5">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 05 — Framework dan library pendukung dalam pembangunan SPA</span>
@@ -642,7 +644,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 6: LIVE WEB GIS DEMO ── */}
-        <section className={`scroll-section section-wide map-section ${currentSection === 6 || visitedSections.has(6) ? 'active' : ''}`} id="section-6">
+        <section className={`scroll-section section-wide map-section ${maxSectionReached >= 6 ? 'active' : ''}`} id="section-6">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 06 — Interaksi Pemetaan Langsung</span>
@@ -733,7 +735,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 7: HASIL IMPLEMENTASI ── */}
-        <section className={`scroll-section section-wide feature-section ${currentSection === 7 || visitedSections.has(7) ? 'active' : ''}`} id="section-7">
+        <section className={`scroll-section section-wide feature-section ${maxSectionReached >= 7 ? 'active' : ''}`} id="section-7">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 07 — Daftar Fungsionalitas Sistem (Tabel Uji Fitur 4.2)</span>
@@ -747,7 +749,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 8: LIGHTHOUSE PERFORMANCE ── */}
-        <section className={`scroll-section perf-section ${currentSection === 8 || visitedSections.has(8) ? 'active' : ''}`} id="section-8">
+        <section className={`scroll-section perf-section ${maxSectionReached >= 8 ? 'active' : ''}`} id="section-8">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 08 — Skor Audit Google Lighthouse &amp; Dampak User Experience</span>
@@ -761,7 +763,7 @@ export default function App() {
         </section>
 
         {/* ── SECTION 9: KESIMPULAN ── */}
-        <section className={`scroll-section closing-section ${currentSection === 9 || visitedSections.has(9) ? 'active' : ''}`} id="section-9">
+        <section className={`scroll-section closing-section ${maxSectionReached >= 9 ? 'active' : ''}`} id="section-9">
           <div className="section-inner">
             <div className="section-header-modern">
               <span className="section-tag-modern">BAGIAN 09 — Penutupan &amp; Arahan Masa Depan</span>

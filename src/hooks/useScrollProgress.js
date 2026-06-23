@@ -36,8 +36,31 @@ export default function useScrollProgress(totalSections = 9) {
       });
     });
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger to handle dynamic page elements / images changing heights
+    const handleRefresh = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('load', handleRefresh);
+    window.addEventListener('resize', handleRefresh);
+
+    // Staggered timeouts to ensure recalculations happen as React mounts/renders images
+    const t1 = setTimeout(handleRefresh, 500);
+    const t2 = setTimeout(handleRefresh, 1000);
+    const t3 = setTimeout(handleRefresh, 2000);
+    const t4 = setTimeout(handleRefresh, 4000);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener('load', handleRefresh);
+      window.removeEventListener('resize', handleRefresh);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+    };
   }, [totalSections]);
 
-  return { scrollProgress, currentSection, containerRef };
+  return { scrollProgress, currentSection, setCurrentSection, containerRef };
 }
+
