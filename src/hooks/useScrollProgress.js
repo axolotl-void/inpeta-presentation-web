@@ -11,21 +11,28 @@ export default function useScrollProgress(totalSections = 9) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // 1. Global progress tracker (robust viewport scroll height based calculation)
       ScrollTrigger.create({
-        trigger: document.documentElement,
-        start: 'top top',
-        end: 'bottom bottom',
+        start: 0,
+        end: 'max',
         onUpdate: (self) => {
-          const progress = self.progress;
-          setScrollProgress(progress);
-
-          // Determine current section (1-based)
-          const section = Math.min(
-            totalSections,
-            Math.floor(progress * totalSections) + 1
-          );
-          setCurrentSection(section);
+          setScrollProgress(self.progress);
         },
+      });
+
+      // 2. Individual section viewport triggers (accounts for varying section heights on mobile)
+      const sections = gsap.utils.toArray('.scroll-section');
+      sections.forEach((section, index) => {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 45%', // triggers when section is in viewport view area
+          end: 'bottom 45%',
+          onToggle: (self) => {
+            if (self.isActive) {
+              setCurrentSection(index + 1);
+            }
+          },
+        });
       });
     });
 
