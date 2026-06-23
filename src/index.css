@@ -301,7 +301,7 @@ strong { color: var(--text-main); }
   margin-bottom: 1.5rem;
   line-height: 1;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .hero-line {
@@ -334,6 +334,7 @@ strong { color: var(--text-main); }
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.35));
 }
 
 .hero-line-3-text {
@@ -341,7 +342,6 @@ strong { color: var(--text-main); }
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.35));
 }
 
 /* Word-by-word reveal animation */
@@ -3234,4 +3234,98 @@ strong { color: var(--text-main); }
   transform: translateY(0);
   transition-delay: 1.1s;
 }
+
+/* ============================================================
+   LAPTOP SCREEN HEIGHT SYNCHRONIZATION (max-height queries)
+   ============================================================ */
+@media (min-width: 992px) and (max-height: 880px) {
+  /* Optimize layout for medium-height laptops (e.g. 1920x1080 with 125% OS scale) */
+  .hero-section {
+    padding-top: 1.5rem !important;
+  }
+  
+  .hero-badge {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .hero-title-block {
+    margin-bottom: 1rem !important;
+  }
+  
+  .subtitle-glass-frame {
+    margin-bottom: 1.5rem !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+  
+  .profile-cards-row {
+    gap: 1rem !important;
+    padding-top: 0.25rem !important;
+  }
+  
+  .profile-card {
+    padding: 1.25rem 1rem 1rem !important;
+    width: 225px !important;
+    gap: 0.45rem !important;
+  }
+  
+  .profile-photo-wrapper {
+    width: 65px !important;
+    height: 65px !important;
+  }
+  
+  .scroll-cta {
+    margin-top: 0.75rem !important;
+  }
+}
+
+@media (min-width: 992px) and (max-height: 760px) {
+  /* Optimize layout for short-height laptops (e.g. 1280x800, 1366x768) */
+  .hero-section {
+    padding-top: 1rem !important;
+  }
+  
+  .hero-badge {
+    margin-bottom: 0.75rem !important;
+    padding: 0.25rem 0.8rem !important;
+  }
+  
+  .hero-title-block {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .subtitle-glass-frame {
+    margin-bottom: 1rem !important;
+    padding: 0.6rem 1.25rem !important;
+  }
+  
+  .profile-cards-row {
+    gap: 0.75rem !important;
+    padding-top: 0.15rem !important;
+  }
+  
+  .profile-card {
+    padding: 0.95rem 0.85rem 0.85rem !important;
+    width: 200px !important;
+    gap: 0.35rem !important;
+    border-radius: 12px !important;
+  }
+  
+  .profile-photo-wrapper {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .profile-card-name {
+    font-size: 0.78rem !important;
+  }
+
+  .profile-card-id {
+    font-size: 0.6rem !important;
+  }
+  
+  .scroll-cta {
+    margin-top: 0.5rem !important;
+  }
+}
+
 
